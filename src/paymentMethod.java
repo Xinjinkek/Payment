@@ -1,6 +1,6 @@
 import javax.swing.*;
 
-public class paymentMethod extends JFrame{
+class paymentMethod extends JFrame{
     private JPanel mainPanel;
     private JTextField cardNumberTextField;
     private JTextField expiryDateTextField;
