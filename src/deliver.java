@@ -1,4 +1,3 @@
-class deliver
-{
+class deliver {
 
 }

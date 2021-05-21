@@ -1,23 +1,18 @@
 import javax.swing.*;
+import java.awt.*;
 
 class paymentMethod extends JFrame{
+
+    //declaration
     private JPanel mainPanel;
     private JTextField cardNumberTextField;
     private JTextField expiryDateTextField;
     private JButton confirmButton;
     private JLabel validateLabel, expiryDateLabel, cardNumberLabel;
-// declaration
 
     public paymentMethod(String title)
     {
         super (title);
-        cardNumberLabel = new JLabel("Card Number : ");
-        expiryDateLabel = new JLabel("Expiry Date: ");
-        validateLabel = new JLabel();
-        cardNumberTextField = new JTextField(16);
-        expiryDateTextField = new JTextField(4);
-        confirmButton = new JButton("Confirm"); 
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(mainPanel);
         this.pack();
     }
