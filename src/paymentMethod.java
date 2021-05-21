@@ -6,7 +6,7 @@ public class paymentMethod extends JFrame{
     private JTextField expiryDateTextField;
     private JButton confirmButton;
     private JLabel validateLabel, expiryDateLabel, cardNumberLabel;
-
+// declaration
 
     public paymentMethod(String title)
     {
