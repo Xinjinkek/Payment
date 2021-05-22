@@ -19,7 +19,7 @@ class paymentMethodTry extends JFrame{
 
     private void createUIComponents() {
         // TODO: place custom component creation code here
-        validateLabel = new JLabel("Invalid number");
+       validateLabel = new JLabel("Invalid number");
         validateLabel.setText("Invalidate");
 
     }
