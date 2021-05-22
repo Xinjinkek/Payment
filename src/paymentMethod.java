@@ -4,6 +4,62 @@ import java.awt.*;
 
 import javax.swing.*;
 
+class cardValidate {
+
+    //declaration of variable
+    private boolean validation = false;
+    private String cardName;
+
+    //Constructor
+    cardValidate(String cardName)
+    {
+        this.cardName = cardName;
+    }
+
+    //Card Validity
+    public boolean validate(String cardNum)
+    {
+        int sum = 0;
+        boolean conditionA = false, conditionB = false;
+
+        for (int i = 1; i < cardNum.length(); i += 2)
+        {
+            int digit = Integer.valueOf(cardNum.substring(i, i+1));
+            if (i % 2 == 0)
+            {
+                digit *= 2;
+                sum += (digit / 10) + (digit % 10);
+            }
+            else
+            {
+                sum += digit;
+            }
+        }
+        conditionA = true;
+
+        if (cardNum.startsWith("4") && cardName == "Visa")
+        {
+            conditionB = true;
+        }
+        else if (cardNum.startsWith("5") && cardName == "MasterCard")
+        {
+            conditionB = true;
+        }
+        else
+        {
+            conditionB = false;
+        }
+
+        if (conditionA && conditionB)
+        {
+            validation = true;
+        }
+
+        return validation;
+
+    }
+}
+
 public class paymentMethod extends JPanel implements ActionListener {
 
     //declaration of variables
@@ -51,8 +107,22 @@ public class paymentMethod extends JPanel implements ActionListener {
 
     }
 
+
     @Override
     public void actionPerformed(ActionEvent e) {
+
+        String number = cardNumber.getText();
+        String name = (String) cardChoice.getSelectedItem();
+
+        cardValidate card = new cardValidate(name);
+        if (card.validate(number))
+        {
+            validateLabel.setText("Card is valid, we will process in short");
+        }
+        else
+        {
+            validateLabel.setText("Card is invalid, please make sure you key in the correct number");
+        }
 
     }
 }
