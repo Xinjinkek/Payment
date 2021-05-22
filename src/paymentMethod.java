@@ -1,5 +1,4 @@
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.awt.*;
 
 import javax.swing.*;
@@ -9,11 +8,12 @@ class cardValidate {
     //declaration of variable
     private boolean validation = false;
     private String cardName;
+    private long cardNum; 
 
     //Constructor
-    cardValidate(String cardName)
+    cardValidate(String cn)
     {
-        this.cardName = cardName;
+        cardName = cn;
     }
 
     //Card Validity
@@ -72,7 +72,8 @@ public class paymentMethod extends JPanel implements ActionListener {
     private JTextField cardNumber;
     //private JTextField expiryDateTextField;
     private JButton confirmButton = new JButton("Press to confirm");
-    private JLabel validateLabel, cardNumberLabel, cardChoicesLabel;
+    private JLabel validateLabel = new JLabel("Pending");
+    private JLabel cardNumberLabel, cardChoicesLabel;
 
     //Constructor
     public paymentMethod()
@@ -88,6 +89,7 @@ public class paymentMethod extends JPanel implements ActionListener {
         cardNumberLabel = new JLabel("Please insert your card number");
 
         //Set panel
+        panel = new JPanel();
         panel.setPreferredSize(new Dimension(WIDTH, HEIGHT));
         panel.add(cardChoicesLabel);
         panel.add(cardChoice);
@@ -121,7 +123,7 @@ public class paymentMethod extends JPanel implements ActionListener {
         }
         else
         {
-            validateLabel.setText("Card is invalid, please make sure you key in the correct number");
+            validateLabel.setText("Card is invalid");
         }
 
     }
