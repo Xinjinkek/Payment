@@ -41,4 +41,12 @@ class paymentMethod extends JFrame{
     }
 
 
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
+        /*boolean cardValidity;
+        if()*/
+
+        validateLabel = new JLabel("Invalid number");
+
+    }
 }
