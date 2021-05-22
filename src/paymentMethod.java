@@ -15,7 +15,7 @@ public class paymentMethod extends JPanel implements ActionListener {
     private JComboBox cardChoice;
     private JTextField cardNumber;
     //private JTextField expiryDateTextField;
-    private JButton confirmButton;
+    private JButton confirmButton = new JButton("Press to confirm");
     private JLabel validateLabel, cardNumberLabel, cardChoicesLabel;
 
     //Constructor
@@ -32,8 +32,21 @@ public class paymentMethod extends JPanel implements ActionListener {
         cardNumberLabel = new JLabel("Please insert your card number");
 
         //Set panel
+        panel.setPreferredSize(new Dimension(WIDTH, HEIGHT));
+        panel.add(cardChoicesLabel);
+        panel.add(cardChoice);
+        panel.add(cardNumber);
+        panel.add(confirmButton);
+        panel.add(validateLabel);
+        confirmButton.addActionListener(this);
 
-
+        //Set frame
+        frame = new JFrame("Selection Payment");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.getContentPane();
+        frame.add(panel);
+        frame.pack();
+        frame.setVisible(true);
 
 
     }
