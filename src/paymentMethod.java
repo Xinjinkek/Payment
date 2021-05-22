@@ -17,6 +17,8 @@ class paymentMethod extends JFrame{
         this.pack();
     }
 
+
+
     //credit card number validation
     //base on the Luhn Checksum algorithm
     public boolean cardNumberValidation(String number)
@@ -37,5 +39,6 @@ class paymentMethod extends JFrame{
         }
         return (sum % 10 == 0);
     }
+
 
 }
