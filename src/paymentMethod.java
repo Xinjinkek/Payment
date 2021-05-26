@@ -102,7 +102,7 @@ public class paymentMethod extends JPanel implements ActionListener {
         frame = new JFrame("Selection Payment");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane();
-        frame.add(panel);
+        frame.add(panel); //add panel into frame
         frame.pack();
         frame.setVisible(true);
 
