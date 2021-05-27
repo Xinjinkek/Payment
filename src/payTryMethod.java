@@ -30,7 +30,7 @@ public class payTryMethod extends JFrame {
                 if (card.validate(number))
                 {
                     validateLabel.setText("Card is valid, we will process in short");
-                    //new displayPayment("Order Summary", number).setVisible(true); //make the new Frame Visible
+                    new displayPayment("Order Summary", number).setVisible(true); //make the new Frame Visible
 
                     dispose(); //dispose the previous Frame
                 }
