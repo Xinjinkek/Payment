@@ -14,6 +14,7 @@ public class payTryMethod extends JFrame {
     private JLabel expiryLabel;
     private JComboBox expiryMonth;
     private JComboBox expiryYear;
+    private JLabel titleLabel;
 
     public payTryMethod(String title) {
 
@@ -34,7 +35,6 @@ public class payTryMethod extends JFrame {
                 {
                     validateLabel.setText("Card is valid, we will process in short");
                     new displayPayment("Order Summary", number).setVisible(true); //make the new Frame Visible
-
                     dispose(); //dispose the previous Frame
                 }
                 else
