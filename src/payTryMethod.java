@@ -11,6 +11,9 @@ public class payTryMethod extends JFrame {
     private JLabel cardNumberLabel;
     private JButton confirmButton;
     private JLabel validateLabel;
+    private JLabel expiryLabel;
+    private JComboBox expiryMonth;
+    private JComboBox expiryYear;
 
     public payTryMethod(String title) {
 
@@ -30,7 +33,7 @@ public class payTryMethod extends JFrame {
                 if (card.validate(number))
                 {
                     validateLabel.setText("Card is valid, we will process in short");
-                    //new displayPayment("Order Summary", number).setVisible(true); //make the new Frame Visible
+                    new displayPayment("Order Summary", number).setVisible(true); //make the new Frame Visible
 
                     dispose(); //dispose the previous Frame
                 }
@@ -49,6 +52,14 @@ public class payTryMethod extends JFrame {
         String[] card = {"MasterCard", "Visa"};
         cardChoice = new JComboBox(card);
         cardChoice.setSelectedIndex(0);
+
+        String[] month = {"01","02","03","04","05","06","07","08","09","10","11","12"};
+        expiryMonth = new JComboBox(month);
+        expiryMonth.setSelectedIndex(0);
+
+        String[] year = {"2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030"};
+        expiryYear = new JComboBox(year);
+        expiryYear.setSelectedIndex(0);
 
 
     }
