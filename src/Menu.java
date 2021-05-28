@@ -74,16 +74,16 @@ public class Menu extends JFrame {
         tableOrder.getColumnModel().getColumn(2).setPreferredWidth(30);
 
         //spinner
-        SpinnerNumberModel spnummodel = new SpinnerNumberModel(0, 0, 10, 1);
-        SpinnerNumberModel spnummodel1 = new SpinnerNumberModel(0, 0, 10, 1);
-        SpinnerNumberModel spnummodel2 = new SpinnerNumberModel(0, 0, 10, 1);
-        SpinnerNumberModel spnummodel3 = new SpinnerNumberModel(0, 0, 10, 1);
+        //SpinnerNumberModel spnummodel = new SpinnerNumberModel(0, 0, 10, 1);
+        //SpinnerNumberModel spnummodel1 = new SpinnerNumberModel(0, 0, 10, 1);
+        //SpinnerNumberModel spnummodel2 = new SpinnerNumberModel(0, 0, 10, 1);
+        //SpinnerNumberModel spnummodel3 = new SpinnerNumberModel(0, 0, 10, 1);
 
 
-        spinnerChickenBurger = new JSpinner(spnummodel);
-        spinnerBeefBurger = new JSpinner(spnummodel1);
-        spinnerBenjo = new JSpinner(spnummodel2);
-        spinnerHotdog = new JSpinner(spnummodel3);
+        spinnerChickenBurger = new JSpinner(new SpinnerNumberModel(1,1,10,1));
+        spinnerBeefBurger = new JSpinner(new SpinnerNumberModel(1,1,10,1));
+        spinnerBenjo = new JSpinner(new SpinnerNumberModel(1,1,10,1));
+        spinnerHotdog = new JSpinner(new SpinnerNumberModel(1,1,10,1));
 
     }
 }
