@@ -80,20 +80,20 @@ public class Menu extends JFrame {
         //SpinnerNumberModel spnummodel3 = new SpinnerNumberModel(0, 0, 10, 1);
 
 
-        spinnerChickenBurger = new JSpinner(new SpinnerNumberModel(1,1,10,1));
-        spinnerBeefBurger = new JSpinner(new SpinnerNumberModel(1,1,10,1));
-        spinnerBenjo = new JSpinner(new SpinnerNumberModel(1,1,10,1));
-        spinnerHotdog = new JSpinner(new SpinnerNumberModel(1,1,10,1));
-        spinnerCoke = new JSpinner(new SpinnerNumberModel(1,1,10,1));
-        spinner100Plus = new JSpinner(new SpinnerNumberModel(1,1,10,1));
-        spinnerSprite = new JSpinner(new SpinnerNumberModel(1,1,10,1));
-        spinnerFanta = new JSpinner(new SpinnerNumberModel(1,1,10,1));
-        spinnerFries = new JSpinner(new SpinnerNumberModel(1,1,10,1));;
-        spinnerOnionRings = new JSpinner(new SpinnerNumberModel(1,1,10,1));
-        spinnerSquidRings = new JSpinner(new SpinnerNumberModel(1,1,10,1));
-        spinnerCurlyFries = new JSpinner(new SpinnerNumberModel(1,1,10,1));
-        spinnerNuggets = new JSpinner(new SpinnerNumberModel(1,1,10,1));
-        spinnerWedges = new JSpinner(new SpinnerNumberModel(1,1,10,1));
+        spinnerChickenBurger = new JSpinner(new SpinnerNumberModel(0,0,10,1));
+        spinnerBeefBurger = new JSpinner(new SpinnerNumberModel(0,0,10,1));
+        spinnerBenjo = new JSpinner(new SpinnerNumberModel(0,0,10,1));
+        spinnerHotdog = new JSpinner(new SpinnerNumberModel(0,0,10,1));
+        spinnerCoke = new JSpinner(new SpinnerNumberModel(0,0,10,1));
+        spinner100Plus = new JSpinner(new SpinnerNumberModel(0,0,10,1));
+        spinnerSprite = new JSpinner(new SpinnerNumberModel(0,0,10,1));
+        spinnerFanta = new JSpinner(new SpinnerNumberModel(0,0,10,1));
+        spinnerFries = new JSpinner(new SpinnerNumberModel(0,0,10,1));;
+        spinnerOnionRings = new JSpinner(new SpinnerNumberModel(0,0,10,1));
+        spinnerSquidRings = new JSpinner(new SpinnerNumberModel(0,0,10,1));
+        spinnerCurlyFries = new JSpinner(new SpinnerNumberModel(0,0,10,1));
+        spinnerNuggets = new JSpinner(new SpinnerNumberModel(0,0,10,1));
+        spinnerWedges = new JSpinner(new SpinnerNumberModel(0,0,10,1));
 
 
     }
