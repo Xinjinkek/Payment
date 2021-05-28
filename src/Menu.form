@@ -88,7 +88,7 @@
                       <text value="Hotdog"/>
                     </properties>
                   </component>
-                  <component id="dc937" class="javax.swing.JLabel" binding="lebelBenjo">
+                  <component id="dc937" class="javax.swing.JLabel" binding="labelBenjo">
                     <constraints>
                       <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
@@ -186,7 +186,7 @@
                       <text value="Coke"/>
                     </properties>
                   </component>
-                  <component id="ad1d" class="javax.swing.JSpinner" binding="spinner1" default-binding="true">
+                  <component id="ad1d" class="javax.swing.JSpinner" binding="spinnerCoke" custom-create="true">
                     <constraints>
                       <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="55" height="20"/>
@@ -194,7 +194,7 @@
                     </constraints>
                     <properties/>
                   </component>
-                  <component id="e240" class="javax.swing.JSpinner" binding="spinner100Plus">
+                  <component id="e240" class="javax.swing.JSpinner" binding="spinner100Plus" custom-create="true">
                     <constraints>
                       <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="55" height="20"/>
@@ -202,7 +202,7 @@
                     </constraints>
                     <properties/>
                   </component>
-                  <component id="4e0b9" class="javax.swing.JSpinner" binding="spinnerSprite">
+                  <component id="4e0b9" class="javax.swing.JSpinner" binding="spinnerSprite" custom-create="true">
                     <constraints>
                       <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="55" height="20"/>
@@ -210,7 +210,7 @@
                     </constraints>
                     <properties/>
                   </component>
-                  <component id="fde21" class="javax.swing.JSpinner" binding="spinnerCoke">
+                  <component id="fde21" class="javax.swing.JSpinner" binding="spinnerFanta" custom-create="true">
                     <constraints>
                       <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="55" height="20"/>
@@ -276,7 +276,7 @@
                       <text value="Fries"/>
                     </properties>
                   </component>
-                  <component id="dcaad" class="javax.swing.JSpinner" binding="spinnerFries">
+                  <component id="dcaad" class="javax.swing.JSpinner" binding="spinnerFries" custom-create="true">
                     <constraints>
                       <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="55" height="20"/>
@@ -284,7 +284,7 @@
                     </constraints>
                     <properties/>
                   </component>
-                  <component id="2c154" class="javax.swing.JSpinner" binding="spinnerOnionRings">
+                  <component id="2c154" class="javax.swing.JSpinner" binding="spinnerOnionRings" custom-create="true">
                     <constraints>
                       <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="55" height="20"/>
@@ -292,7 +292,7 @@
                     </constraints>
                     <properties/>
                   </component>
-                  <component id="780c4" class="javax.swing.JSpinner" binding="spinnerSquidRings">
+                  <component id="780c4" class="javax.swing.JSpinner" binding="spinnerSquidRings" custom-create="true">
                     <constraints>
                       <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="55" height="20"/>
@@ -300,7 +300,7 @@
                     </constraints>
                     <properties/>
                   </component>
-                  <component id="22989" class="javax.swing.JSpinner" binding="spinnerCurlyFries">
+                  <component id="22989" class="javax.swing.JSpinner" binding="spinnerCurlyFries" custom-create="true">
                     <constraints>
                       <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="55" height="20"/>
@@ -308,7 +308,7 @@
                     </constraints>
                     <properties/>
                   </component>
-                  <component id="8d0b2" class="javax.swing.JSpinner" binding="spinnerNuggets">
+                  <component id="8d0b2" class="javax.swing.JSpinner" binding="spinnerNuggets" custom-create="true">
                     <constraints>
                       <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="55" height="20"/>
@@ -316,7 +316,7 @@
                     </constraints>
                     <properties/>
                   </component>
-                  <component id="f88cb" class="javax.swing.JSpinner" binding="spinnerWedges">
+                  <component id="f88cb" class="javax.swing.JSpinner" binding="spinnerWedges" custom-create="true">
                     <constraints>
                       <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="55" height="20"/>
