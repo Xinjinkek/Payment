@@ -1,3 +1,2 @@
 public class Register {
-    //hello
 }
