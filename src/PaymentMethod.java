@@ -10,7 +10,6 @@ public class PaymentMethod extends JFrame {
     private JLabel cardChoicesLabel;
     private JLabel cardNumberLabel;
     private JButton confirmButton;
-    private JLabel validateLabel;
     private JLabel expiryLabel;
     private JComboBox expiryMonth;
     private JComboBox expiryYear;
@@ -33,13 +32,13 @@ public class PaymentMethod extends JFrame {
                 cardValidate card = new cardValidate(name);
                 if (card.validate(number))
                 {
-                    validateLabel.setText("Card is valid, we will process in short");
+                    JOptionPane.showMessageDialog(null, "You may Proceed to Order Summary");
                     new displayPayment("Order Summary", number).setVisible(true); //make the new Frame Visible
                     dispose(); //dispose the previous Frame
                 }
                 else
                 {
-                    validateLabel.setText("Card is invalid, please enter a valid card number.");
+                    JOptionPane.showMessageDialog(null, "Card Invalid, Please Retype!");
                 }
             }
         });
