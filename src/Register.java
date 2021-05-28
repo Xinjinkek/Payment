@@ -33,13 +33,6 @@ public class Register extends JFrame {
         this.setVisible(true);
 
 
-        Register.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Register Successfully");
-            }
-        });
-
         Username.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -88,6 +81,13 @@ public class Register extends JFrame {
                 if (Cust_Add.equals("")) {
                     JOptionPane.showMessageDialog(null, "Enter Address");
                 }
+            }
+        });
+
+        Register.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "Register Successfully");
             }
         });
     }
