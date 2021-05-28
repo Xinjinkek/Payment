@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class payTryMethod extends JFrame {
+public class PaymentMethod extends JFrame {
 
     private JPanel main;
     private JTextField cardNumber;
@@ -16,7 +16,7 @@ public class payTryMethod extends JFrame {
     private JComboBox expiryYear;
     private JLabel titleLabel;
 
-    public payTryMethod(String title) {
+    public PaymentMethod(String title) {
 
         super(title);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
