@@ -1,4 +1,8 @@
+//Class written to use for Card Validation Purpose
+//To validate if the Credit Card Number input is correct
+
 public class cardValidate {
+
     //declaration of variable
     private boolean validation = false;
     private String cardName;
@@ -16,6 +20,7 @@ public class cardValidate {
         int sum = 0;
         boolean conditionA = false, conditionB = false;
 
+        //By using Luhn Algorithm for credit card validation
         for (int i = 1; i < cardNum.length(); i += 2)
         {
             int digit = Integer.valueOf(cardNum.substring(i, i+1));
