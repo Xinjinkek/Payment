@@ -9,8 +9,8 @@ import java.awt.event.ActionListener;
 
 
 public class Register extends JFrame {
-    //Declare variable
 
+    //Declare variable
     private JPanel Panel;
     private JLabel Title;
     private JLabel Cust_Name;
