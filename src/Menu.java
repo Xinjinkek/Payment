@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Menu extends JFrame {
+    private JFrame frame;
     private JPanel mainPanel;
     private JPanel panelShopInfo;
     private JLabel labelShopName;
@@ -55,7 +56,7 @@ public class Menu extends JFrame {
 
     public Menu(String title) {
         //super(title);
-        JFrame frame = new JFrame(title);
+        frame = new JFrame(title);
         frame.setBounds(300,100,800,600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setContentPane(mainPanel);
@@ -72,7 +73,7 @@ public class Menu extends JFrame {
         });
     }
 
-    private void createUIComponents() {
+     void createUIComponents() {
         // TODO: place custom component creation code here
         dtm = new DefaultTableModel(0, 0);
         final String header[] = new String[] { "Item", "Qty", "Price", "Spinner" };
