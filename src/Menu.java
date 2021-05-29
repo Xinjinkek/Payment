@@ -1,10 +1,11 @@
+import com.sun.tools.javac.Main;
+
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 public class Menu extends JFrame {
     private JPanel mainPanel;
@@ -54,16 +55,16 @@ public class Menu extends JFrame {
     private JButton backButton;
     private JTable tableOrder;
     private JPanel panelTotal;
+    private JButton buttonReset;
     public DefaultTableModel dtm;
 
-    double f1, f2, f3, f4;
     double food1, food2, food3, food4;
-    double d1, d2, d3, d4;
+    double totalFood1, totalFood2, totalFood3, totalFood4;
     double drinks1, drinks2, drinks3, drinks4;
-    double s1, s2, s3, s4, s5, s6;
+    double totalDrinks1, totalDrinks2, totalDrinks3, totalDrinks4;
     double sides1, sides2, sides3, sides4, sides5, sides6;
+    double totalSides1, totalSides2, totalSides3, totalSides4, totalSides5, totalSides6;
     double total = 0;
-    double totalPrice = 0;
 
     double foodTotal;
     double drinksTotal;
@@ -83,25 +84,45 @@ public class Menu extends JFrame {
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Register register = new Register("Register");
+                new Register("Register");
                 dispose();
             }
         });
        orderButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-            PaymentMethod payment = new PaymentMethod("Pay with MasterCard or Visa");
+            new PaymentMethod("Pay with MasterCard or Visa");
             dispose();
             }
         });
 
-        spinnerChickenBurger.addChangeListener(listenerFood);
-        spinnerBeefBurger.addChangeListener(listenerFood);
-        spinnerBenjo.addChangeListener(listenerFood);
-        spinnerHotdog.addChangeListener(listenerFood);
+        spinnerChickenBurger.addChangeListener(foodListener);
+        spinnerBeefBurger.addChangeListener(foodListener);
+        spinnerBenjo.addChangeListener(foodListener);
+        spinnerHotdog.addChangeListener(foodListener);
+
+        spinnerCoke.addChangeListener(drinksListener);
+        spinner100Plus.addChangeListener(drinksListener);
+        spinnerSprite.addChangeListener(drinksListener);
+        spinnerFanta.addChangeListener(drinksListener);
+
+        spinnerFries.addChangeListener(sidesListener);
+        spinnerOnionRings.addChangeListener(sidesListener);
+        spinnerSquidRings.addChangeListener(sidesListener);
+        spinnerCurlyFries.addChangeListener(sidesListener);
+        spinnerNuggets.addChangeListener(sidesListener);
+        spinnerWedges.addChangeListener(sidesListener);
+
+        buttonReset.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new Menu("Main Menu");
+                dispose();
+            }
+        });
     }
 
-    ChangeListener listenerFood = new ChangeListener() {
+    ChangeListener foodListener = new ChangeListener() {
         @Override
         public void stateChanged(ChangeEvent e) {
 
@@ -111,61 +132,264 @@ public class Menu extends JFrame {
                 if (dtm.getValueAt(row, 3) == e.getSource()) {
                     if (dtm.getValueAt(row, 0).equals("Chicken Burger")) {
                         dtm.setValueAt(quantity, row, 1); // obj, row, column
-                        dtm.setValueAt(f1 * quantity, row, 2);
-                        food1 = f1 * quantity;
+                        dtm.setValueAt(food1 * quantity, row, 2);
+                        totalFood1 = food1 * quantity;
 
                     } else if (dtm.getValueAt(row, 0).equals("Beef Burger")) {
 
                         dtm.setValueAt(quantity, row, 1);
-                        dtm.setValueAt(f2 * quantity, row, 2);
-                        food2 = f2 * quantity;
+                        dtm.setValueAt(food2 * quantity, row, 2);
+                        totalFood2 = food2 * quantity;
                     } else if (dtm.getValueAt(row, 0).equals("Benjo")) {
 
                         dtm.setValueAt(quantity, row, 1);
-                        dtm.setValueAt(f3 * quantity, row, 2);
-                        food3 = f3 * quantity;
+                        dtm.setValueAt(food3 * quantity, row, 2);
+                        totalFood3 = food3 * quantity;
                     } else if (dtm.getValueAt(row, 0).equals("Hotdog")) {
 
                         dtm.setValueAt(quantity, row, 1);
-                        dtm.setValueAt(f4 * quantity, row, 2);
-                        food4 = f4 * quantity;
+                        dtm.setValueAt(food4 * quantity, row, 2);
+                        totalFood4 = food4 * quantity;
                     }
 
                     if (quantity == 0) {
                         dtm.removeRow(row);
                     }
-                    foodTotal = food1 + food2 + food3 + food4;
+                    foodTotal = totalFood1 + totalFood2 + totalFood3 + totalFood4;
                     total = foodTotal + drinksTotal + sidesTotal;
                     textFieldTotal.setText(total + "");
                     return;
                 }
            }
 
-            // there was no row with this JSpinner, so we have to add it
             for (int i = 0; i < numberOfFoods; i++) {
-                // looking for the "clicked" JSpinner
                 if (spinnerChickenBurger == e.getSource()) {
-                    totalPrice = food1price;
-                    f1 = 4.0;
-                    food1 =f1;
-                    foodTotal = food1 + food2 + food3 + food4;
+                    food1 = 10.00;
+                    totalFood1 = food1;
+                    foodTotal = totalFood1 + totalFood2 + totalFood3 + totalFood4;
                     total = foodTotal + drinksTotal + sidesTotal;
                     textFieldTotal.setText(total + "");
-                    dtm.addRow(new Object[] { labelChickenBurger.getText(), quantity, totalPrice, spinnerChickenBurger });
+                    dtm.addRow(new Object[] { labelChickenBurger.getText(), quantity, food1, spinnerChickenBurger });
                     return;
                 }
                 else if (spinnerBeefBurger == e.getSource()) {
-                  //  totalPrice = foodprice;
-                    f2 = 5.0;
-                    food2 =f2;
-                    foodTotal = food1 + food2 + food3 + food4;
+                    food2 = 12.00;
+                    totalFood2 = food2;
+                    foodTotal = totalFood1 + totalFood2 + totalFood3 + totalFood4;
                     total = foodTotal + drinksTotal + sidesTotal;
                     textFieldTotal.setText(total + "");
-                    dtm.addRow(new Object[] { labelBeefBurger.getText(), quantity, f2*quantity, spinnerBeefBurger });
+                    dtm.addRow(new Object[] { labelBeefBurger.getText(), quantity, food2, spinnerBeefBurger });
+                    return;
+                }
+                else if (spinnerBenjo == e.getSource()) {
+                    food3 = 5.00;
+                    totalFood3 = food3;
+                    foodTotal = totalFood1 + totalFood2 + totalFood3 + totalFood4;
+                    total = foodTotal + drinksTotal + sidesTotal;
+                    textFieldTotal.setText(total + "");
+                    dtm.addRow(new Object[] { labelBenjo.getText(), quantity, food3, spinnerBenjo });
+                    return;
+                }
+                else if (spinnerHotdog == e.getSource()) {
+                    food4 = 7.00;
+                    totalFood4 = food4;
+                    foodTotal = totalFood1 + totalFood2 + totalFood3 + totalFood4;
+                    total = foodTotal + drinksTotal + sidesTotal;
+                    textFieldTotal.setText(total + "");
+                    dtm.addRow(new Object[] { labelHotdog.getText(), quantity, food4, spinnerHotdog });
                     return;
                 }
 
+            }
+        }
+    };
+    ChangeListener drinksListener = new ChangeListener() {
+        @Override
+        public void stateChanged(ChangeEvent e) {
 
+            final int quantity = (int) ((JSpinner) e.getSource()).getValue();
+            final int rows = tableOrder.getRowCount();
+            for (int row = 0; row < rows; row++) {
+                if (dtm.getValueAt(row, 3) == e.getSource()) {
+                    if (dtm.getValueAt(row, 0).equals("Coke")) {
+                        dtm.setValueAt(quantity, row, 1); // obj, row, column
+                        dtm.setValueAt(drinks1 * quantity, row, 2);
+                        totalDrinks1 = drinks1 * quantity;
+
+                    } else if (dtm.getValueAt(row, 0).equals("100 Plus")) {
+
+                        dtm.setValueAt(quantity, row, 1);
+                        dtm.setValueAt(drinks2 * quantity, row, 2);
+                        totalDrinks2 = drinks2 * quantity;
+                    } else if (dtm.getValueAt(row, 0).equals("Sprite")) {
+
+                        dtm.setValueAt(quantity, row, 1);
+                        dtm.setValueAt(drinks3 * quantity, row, 2);
+                        totalDrinks3 = drinks3 * quantity;
+                    } else if (dtm.getValueAt(row, 0).equals("Fanta")) {
+
+                        dtm.setValueAt(quantity, row, 1);
+                        dtm.setValueAt(drinks4 * quantity, row, 2);
+                        totalDrinks4 = drinks4 * quantity;
+                    }
+
+                    if (quantity == 0) {
+                        dtm.removeRow(row);
+                    }
+                    drinksTotal = totalDrinks1 + totalDrinks2 + totalDrinks3 + totalDrinks4;
+                    total = foodTotal + drinksTotal + sidesTotal;
+                    textFieldTotal.setText(total + "");
+                    return;
+                }
+            }
+
+            for (int i = 0; i < numberOfSides; i++) {
+                if (spinnerCoke == e.getSource()) {
+                    drinks1 = 3.00;
+                    totalDrinks1 = drinks1;
+                    drinksTotal = totalDrinks1 + totalDrinks2 + totalDrinks3 + totalDrinks4;
+                    total = foodTotal + drinksTotal + sidesTotal;
+                    textFieldTotal.setText(total + "");
+                    dtm.addRow(new Object[] { labelCoke.getText(), quantity, drinks1, spinnerCoke});
+                    return;
+                }
+                else if (spinner100Plus == e.getSource()) {
+                    drinks2 = 3.00;
+                    totalDrinks2 = drinks2;
+                    drinksTotal = totalDrinks1 + totalDrinks2 + totalDrinks3 + totalDrinks4;
+                    total = foodTotal + drinksTotal + sidesTotal;
+                    textFieldTotal.setText(total + "");
+                    dtm.addRow(new Object[] { label100Plus.getText(), quantity, drinks2, spinner100Plus});
+                    return;
+                }
+                else if (spinnerSprite == e.getSource()) {
+                    drinks3 = 3.00;
+                    totalDrinks3 = drinks3;
+                    drinksTotal = totalDrinks1 + totalDrinks2 + totalDrinks3 + totalDrinks4;
+                    total = foodTotal + drinksTotal + sidesTotal;
+                    textFieldTotal.setText(total + "");
+                    dtm.addRow(new Object[] { labelSprite.getText(), quantity, drinks3, spinnerSprite});
+                    return;
+                }
+                else if (spinnerFanta == e.getSource()) {
+                    drinks4 = 3.00;
+                    totalDrinks4 = drinks4;
+                    drinksTotal = totalDrinks1 + totalDrinks2 + totalDrinks3 + totalDrinks4;
+                    total = foodTotal + drinksTotal + sidesTotal;
+                    textFieldTotal.setText(total + "");
+                    dtm.addRow(new Object[] { labelFanta.getText(), quantity, drinks4, spinnerFanta});
+                    return;
+                }
+
+            }
+        }
+    };
+
+    ChangeListener sidesListener = new ChangeListener() {
+        @Override
+        public void stateChanged(ChangeEvent e) {
+
+            final int quantity = (int) ((JSpinner) e.getSource()).getValue();
+            final int rows = tableOrder.getRowCount();
+            for (int row = 0; row < rows; row++) {
+                if (dtm.getValueAt(row, 3) == e.getSource()) {
+                    if (dtm.getValueAt(row, 0).equals("Fries")) {
+                        dtm.setValueAt(quantity, row, 1); // obj, row, column
+                        dtm.setValueAt(sides1 * quantity, row, 2);
+                        totalSides1 = sides1 * quantity;
+
+                    } else if (dtm.getValueAt(row, 0).equals("Onion Rings")) {
+
+                        dtm.setValueAt(quantity, row, 1);
+                        dtm.setValueAt(sides2 * quantity, row, 2);
+                        totalSides2 = sides2 * quantity;
+                    } else if (dtm.getValueAt(row, 0).equals("Squid Rings")) {
+
+                        dtm.setValueAt(quantity, row, 1);
+                        dtm.setValueAt(sides3 * quantity, row, 2);
+                        totalSides3 = sides3 * quantity;
+                    } else if (dtm.getValueAt(row, 0).equals("Curly Fries")) {
+
+                        dtm.setValueAt(quantity, row, 1);
+                        dtm.setValueAt(sides4 * quantity, row, 2);
+                        totalSides4 = sides4 * quantity;
+                    }else if (dtm.getValueAt(row, 0).equals("Nuggets")) {
+
+                        dtm.setValueAt(quantity, row, 1);
+                        dtm.setValueAt(sides5 * quantity, row, 2);
+                        totalSides5 = sides5 * quantity;
+                    }else if (dtm.getValueAt(row, 0).equals("Wedges")) {
+
+                        dtm.setValueAt(quantity, row, 1);
+                        dtm.setValueAt(sides6 * quantity, row, 2);
+                        totalSides6 = sides6 * quantity;
+                    }
+
+                    if (quantity == 0) {
+                        dtm.removeRow(row);
+                    }
+                    sidesTotal = totalSides1 + totalSides2 + totalSides3 + totalSides4 + totalSides5 + totalSides6;
+                    total = foodTotal + drinksTotal + sidesTotal;
+                    textFieldTotal.setText(total + "");
+                    return;
+                }
+            }
+
+            for (int i = 0; i < numberOfDrinks; i++) {
+                if (spinnerFries == e.getSource()) {
+                    sides1 = 5.00;
+                    totalSides1 = sides1;
+                    sidesTotal = totalSides1 + totalSides2 + totalSides3 + totalSides4 + totalSides5 + totalSides6;
+                    total = foodTotal + drinksTotal + sidesTotal;
+                    textFieldTotal.setText(total + "");
+                    dtm.addRow(new Object[] { labelFries.getText(), quantity, sides1, spinnerFries});
+                    return;
+                }
+                else if (spinnerOnionRings == e.getSource()) {
+                    sides2 = 7.00;
+                    totalSides2 = sides2;
+                    sidesTotal = totalSides1 + totalSides2 + totalSides3 + totalSides4 + totalSides5 + totalSides6;
+                    total = foodTotal + drinksTotal + sidesTotal;
+                    textFieldTotal.setText(total + "");
+                    dtm.addRow(new Object[] { labelOnionRings.getText(), quantity, sides2, spinnerOnionRings});
+                    return;
+                }
+                else if (spinnerSquidRings == e.getSource()) {
+                    sides3 = 7.00;
+                    totalSides3 =  sides3;
+                    sidesTotal = totalSides1 + totalSides2 + totalSides3 + totalSides4 + totalSides5 + totalSides6;
+                    total = foodTotal + drinksTotal + sidesTotal;
+                    textFieldTotal.setText(total + "");
+                    dtm.addRow(new Object[] { labelSquidRings.getText(), quantity, sides3, spinnerSquidRings});
+                    return;
+                }
+                else if (spinnerCurlyFries == e.getSource()) {
+                    sides4 = 7.00;
+                    totalSides4 = sides4;
+                    sidesTotal = totalSides1 + totalSides2 + totalSides3 + totalSides4 + totalSides5 + totalSides6;
+                    total = foodTotal + drinksTotal + sidesTotal;
+                    textFieldTotal.setText(total + "");
+                    dtm.addRow(new Object[] { labelCurlyFries.getText(), quantity, sides4, spinnerCurlyFries});
+                    return;
+                }
+                else if (spinnerNuggets == e.getSource()) {
+                    sides5 = 8.00;
+                    totalSides5 = sides5;
+                    sidesTotal = totalSides1 + totalSides2 + totalSides3 + totalSides4 + totalSides5 + totalSides6;
+                    total = foodTotal + drinksTotal + sidesTotal;
+                    textFieldTotal.setText(total + "");
+                    dtm.addRow(new Object[] { labelNuggets.getText(), quantity, sides5, spinnerNuggets});
+                    return;
+                }
+                else if (spinnerWedges == e.getSource()) {
+                    sides6 = 7.00;
+                    totalSides6 = sides6;
+                    sidesTotal = totalSides1 + totalSides2 + totalSides3 + totalSides4 + totalSides5 + totalSides6;
+                    total = foodTotal + drinksTotal + sidesTotal;
+                    textFieldTotal.setText(total + "");
+                    dtm.addRow(new Object[] { labelWedges.getText(), quantity, sides6, spinnerWedges});
+                    return;
+                }
             }
         }
     };
