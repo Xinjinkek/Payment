@@ -76,7 +76,8 @@ public class Register extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Display message
-                if(NameTextField.getText().isEmpty() || emailTextField.getText().isEmpty() || ContactTextField.getText().isEmpty() || AddressTextField.getText().isEmpty())
+                if(NameTextField.getText().isEmpty() || emailTextField.getText().isEmpty() ||
+                        ContactTextField.getText().isEmpty() || AddressTextField.getText().isEmpty())
                 {
                     JOptionPane.showMessageDialog(null, "Register Not Successful");
                 }
