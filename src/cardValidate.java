@@ -1,6 +1,8 @@
 //Class written to use for Card Validation Purpose
 //To validate if the Credit Card Number input is correct
 
+import java.text.SimpleDateFormat;
+
 public class cardValidate {
 
     //declaration of variable
@@ -15,7 +17,7 @@ public class cardValidate {
     }
 
     //Card Validity
-    public boolean validate(String cardNum)
+    public boolean validateNumber(String cardNum)
     {
         int sum = 0;
         boolean conditionA = false, conditionB = false;
@@ -57,4 +59,5 @@ public class cardValidate {
         return validation;
 
     }
+
 }

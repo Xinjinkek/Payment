@@ -11,9 +11,6 @@ public class PaymentMethod extends JFrame {
     private JLabel cardChoicesLabel;
     private JLabel cardNumberLabel;
     private JButton confirmButton;
-    private JLabel expiryLabel;
-    private JComboBox expiryMonth;
-    private JComboBox expiryYear;
     private JLabel titleLabel;
 
     public PaymentMethod(String title) {
@@ -33,7 +30,7 @@ public class PaymentMethod extends JFrame {
                 String name = (String) cardChoice.getSelectedItem();
 
                 cardValidate card = new cardValidate(name);
-                if (card.validate(number))
+                if (card.validateNumber(number))//&& card.validateDate(date))
                 {
                     //Display validation correct for card input
                     JOptionPane.showMessageDialog(null, "You may Proceed to Order Summary");
@@ -62,17 +59,6 @@ public class PaymentMethod extends JFrame {
         String[] card = {"MasterCard", "Visa"};
         cardChoice = new JComboBox(card);
         cardChoice.setSelectedIndex(0);
-
-        //Expiry Month ComboBox declaration
-        String[] month = {"01","02","03","04","05","06","07","08","09","10","11","12"};
-        expiryMonth = new JComboBox(month);
-        expiryMonth.setSelectedIndex(0);
-
-        //Expiry Year ComboBox declaration
-        String[] year = {"2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030"};
-        expiryYear = new JComboBox(year);
-        expiryYear.setSelectedIndex(0);
-
 
     }
 }
