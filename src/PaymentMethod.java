@@ -24,6 +24,7 @@ public class PaymentMethod extends JFrame {
         this.pack();
         this.setVisible(true);
 
+
         //Action Listener confirm Button to Validate card for payment
         confirmButton.addActionListener(new ActionListener() {
             @Override
@@ -47,7 +48,6 @@ public class PaymentMethod extends JFrame {
                 {
                     //Display Error message and request user to re-input
                     JOptionPane.showMessageDialog(null, "Card Invalid, Please Retype!");
-
                 }
             }
         });

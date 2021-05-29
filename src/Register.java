@@ -94,5 +94,14 @@ public class Register extends JFrame {
 }
 
 
+//Code to pass the value of the name, address, contact
+
+    /* new displayPayment(name, address, contact number);
+    * will need to create a new constructor to pass the details to payment
+    * hence, declaration of
+    * String name = Cust_Name.getText()
+    * String address = Cust_Add.getText()
+    * String contact = Cust_PhoneNo.getText()*/
+
 
 
