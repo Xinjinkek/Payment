@@ -8,7 +8,6 @@ public class displayPayment extends JFrame {
     private JPanel mainPanel;
     private JPanel detailsPanel;
     private JPanel menuPanel;
-    private JTable menuDisplayTable;
     private JLabel titleLabel;
     private JLabel labelNameTitle;
     private JLabel labelContact;
@@ -20,6 +19,8 @@ public class displayPayment extends JFrame {
     private JLabel labelDisplayCard;
     private JLabel labelAddress;
     private JLabel labelDisplayAddress;
+    private JTable menuDisplayTable;
+    private JButton confirmOrderButton;
 
     public displayPayment(String name, String cardN)
     {
@@ -27,6 +28,7 @@ public class displayPayment extends JFrame {
         labelDisplayCard.setText(cardN);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(mainPanel);
+        this.setBounds(300,100,200,200);
         this.pack();
         this.setVisible(true);
         readDetails();
