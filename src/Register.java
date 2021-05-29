@@ -1,5 +1,4 @@
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -7,22 +6,26 @@ public class Register extends JFrame {
     //Declare variable
     private JPanel Panel;
     private JLabel Title;
-    private JLabel Cust_Name, Cust_email, Cust_PhoneNo, Cust_Add;
-    private JTextField Name, ContactNo, Address, Address2, Email;
-    private JButton Register;
+    private JLabel NameLabel, EmailLabel, ContactNumberLabel, AddressLabel;
+    private JButton RegisterJButton;
+    private JTextField NameTextField;
+    private JTextField emailTextField;
+    private JTextField ContactTextField;
+    private JTextField AddressTextField;
 
     public Register(String title) {
+
         super(title);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(Panel);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.pack();
         this.setVisible(true);
 
 
-        Name.addActionListener(new ActionListener() {
+        /*Name.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (Cust_Name.equals("")) {
+                if (NameLabel.equals("")) {
                 }
                 JOptionPane.showMessageDialog(null, "Enter your Name");
 
@@ -32,7 +35,7 @@ public class Register extends JFrame {
         Email.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (Cust_email.equals("")) {
+                if (EmailLabel.equals("")) {
                     JOptionPane.showMessageDialog(null, "Enter your Email");
                 }
             }
@@ -42,7 +45,7 @@ public class Register extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                if (Cust_PhoneNo.equals("")) {
+                if (ContactNumberLabel.equals("")) {
                     JOptionPane.showMessageDialog(null, "Enter contact Number");
                 }
             }
@@ -51,7 +54,7 @@ public class Register extends JFrame {
         Address.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (Cust_Add.equals("")) {
+                if (AddressLabel.equals("")) {
                     JOptionPane.showMessageDialog(null, "Enter Address");
                 }
             }
@@ -60,17 +63,28 @@ public class Register extends JFrame {
         Address2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (Cust_Add.equals("")) {
+                if (AddressLabel.equals("")) {
                     JOptionPane.showMessageDialog(null, "Enter Address");
                 }
             }
         });
-        //Action Listener Register
-        Register.addActionListener(new ActionListener() {
+
+         */
+
+        //Action Listener RegisterJButton
+        RegisterJButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Display message
-                JOptionPane.showMessageDialog(null, "Register Successfully");
+                if(NameTextField.getText().isEmpty() || emailTextField.getText().isEmpty() || ContactTextField.getText().isEmpty() || AddressTextField.getText().isEmpty())
+                {
+                    JOptionPane.showMessageDialog(null, "Register Not Successful");
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(null, "Register Successful!");
+                }
+
             }
         });
     }
@@ -89,9 +103,9 @@ public class Register extends JFrame {
     /* new displayPayment(name, address, contact number);
     * will need to create a new constructor to pass the details to payment
     * hence, declaration of
-    * String name = Cust_Name.getText()
-    * String address = Cust_Add.getText()
-    * String contact = Cust_PhoneNo.getText()*/
+    * String name = NameLabel.getText()
+    * String address = AddressLabel.getText()
+    * String contact = ContactNumberLabel.getText()*/
 
 
 
