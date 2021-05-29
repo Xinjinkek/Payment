@@ -92,7 +92,7 @@ public class Menu extends JFrame {
                 frame.dispose();
             }
         });
-        orderButton.addActionListener(new ActionListener() {
+       orderButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
             PaymentMethod payment = new PaymentMethod("Pay with MasterCard or Visa");

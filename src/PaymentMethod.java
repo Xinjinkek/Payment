@@ -30,13 +30,13 @@ public class PaymentMethod extends JFrame {
                 String name = (String) cardChoice.getSelectedItem();
 
                 cardValidate card = new cardValidate(name);
-                if (card.validateNumber(number))//&& card.validateDate(date))
+                if (card.validateNumber(number))
                 {
                     //Display validation correct for card input
                     JOptionPane.showMessageDialog(null, "You may Proceed to Order Summary");
 
                     //Visible the frame in Order Summary
-                    new displayPayment("Order Summary", number).setVisible(true);
+                    new displayPayment("Order Summary").setVisible(true);
 
                     //To dispose the previous JFrame
                     dispose();
