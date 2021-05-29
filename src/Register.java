@@ -22,55 +22,6 @@ public class Register extends JFrame {
         this.setVisible(true);
 
 
-        /*Name.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (NameLabel.equals("")) {
-                }
-                JOptionPane.showMessageDialog(null, "Enter your Name");
-
-            }
-        });
-
-        Email.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (EmailLabel.equals("")) {
-                    JOptionPane.showMessageDialog(null, "Enter your Email");
-                }
-            }
-        });
-
-        ContactNo.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-                if (ContactNumberLabel.equals("")) {
-                    JOptionPane.showMessageDialog(null, "Enter contact Number");
-                }
-            }
-        });
-
-        Address.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (AddressLabel.equals("")) {
-                    JOptionPane.showMessageDialog(null, "Enter Address");
-                }
-            }
-        });
-
-        Address2.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (AddressLabel.equals("")) {
-                    JOptionPane.showMessageDialog(null, "Enter Address");
-                }
-            }
-        });
-
-         */
-
         //Action Listener RegisterJButton
         RegisterJButton.addActionListener(new ActionListener() {
             @Override
