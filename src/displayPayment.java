@@ -2,22 +2,26 @@ import javax.swing.*;
 
 public class displayPayment extends JFrame {
 
-    private JPanel mainPanel2;
-    private JLabel paneTitle;
-    private JLabel details;
-    private JLabel nameLabel;
-    private JLabel addressLabel;
-    private JLabel cardNumberLabel;
-    private JLabel displayCardNumLabel;
-    private JLabel displayCustomerNameLabel;
-    private JLabel displayAddressLabel;
+    private JPanel mainPanel;
+    private JPanel detailsPanel;
+    private JPanel menuPanel;
+    private JTable menuDisplayTable;
+    private JLabel titleLabel;
+    private JLabel labelNameTitle;
+    private JLabel labelContact;
+    private JLabel labelAddress;
+    private JLabel labelCard;
+    private JLabel labelDisplayName;
+    private JLabel labelDisplayContact;
+    private JLabel labelDisplayAddress;
+    private JLabel labelDisplayCard;
 
     public displayPayment(String name, String cardN)
     {
         super(name);
-        displayCardNumLabel.setText(cardN);
+        labelDisplayCard.setText(cardN);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setContentPane(mainPanel2);
+        this.setContentPane(mainPanel);
         this.pack();
         this.setVisible(true);
     }

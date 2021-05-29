@@ -84,6 +84,8 @@ public class Register extends JFrame {
                 else
                 {
                     JOptionPane.showMessageDialog(null, "Register Successful!");
+                    new Menu("Main Menu").setVisible(true);
+                    dispose();
                 }
 
             }
