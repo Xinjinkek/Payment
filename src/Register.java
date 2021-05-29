@@ -35,7 +35,7 @@ public class Register extends JFrame {
 
                 try {
 
-                    FileWriter Writer = new FileWriter("customer.txt");
+                    FileWriter Writer = new FileWriter("storage\\customer.txt");
                     Writer.write(name + "\n" + email + "\n" + contact + "\n" + address);
                     Writer.close();
 
