@@ -1,5 +1,7 @@
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Menu extends JFrame {
     private JPanel mainPanel;
@@ -52,12 +54,22 @@ public class Menu extends JFrame {
     DefaultTableModel dtm;
 
     public Menu(String title) {
-        super(title);
-        this.setBounds(300,100,800,600);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setContentPane(mainPanel);
-        this.setVisible(true);
-        this.createUIComponents();
+        //super(title);
+        JFrame frame = new JFrame(title);
+        frame.setBounds(300,100,800,600);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setContentPane(mainPanel);
+        frame.setVisible(true);
+        createUIComponents();
+
+
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Register register = new Register("Register");
+                frame.dispose();
+            }
+        });
     }
 
     private void createUIComponents() {
