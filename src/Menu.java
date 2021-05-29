@@ -2,6 +2,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class Menu extends JFrame {
     private JFrame frame;
@@ -61,7 +62,7 @@ public class Menu extends JFrame {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setContentPane(mainPanel);
         frame.setVisible(true);
-        createUIComponents();
+        //createUIComponents();
 
 
         backButton.addActionListener(new ActionListener() {
@@ -69,6 +70,13 @@ public class Menu extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 Register register = new Register("Register");
                 frame.dispose();
+            }
+        });
+        orderButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            PaymentMethod payment = new PaymentMethod("Pay with MasterCard or Visa");
+            frame.dispose();
             }
         });
     }
