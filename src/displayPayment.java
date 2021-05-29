@@ -12,10 +12,10 @@ public class displayPayment extends JFrame {
     private JLabel displayCustomerNameLabel;
     private JLabel displayAddressLabel;
 
-    public displayPayment(String name) //String cardN)
+    public displayPayment(String name, String cardN)
     {
         super(name);
-        //displayCardNumLabel.setText(cardN);
+        displayCardNumLabel.setText(cardN);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(mainPanel2);
         this.pack();
