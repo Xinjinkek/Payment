@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileWriter;
 
 public class Register extends JFrame {
     //Declare variable
@@ -21,61 +22,29 @@ public class Register extends JFrame {
         this.pack();
         this.setVisible(true);
 
-
-        /*Name.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (NameLabel.equals("")) {
-                }
-                JOptionPane.showMessageDialog(null, "Enter your Name");
-
-            }
-        });
-
-        Email.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (EmailLabel.equals("")) {
-                    JOptionPane.showMessageDialog(null, "Enter your Email");
-                }
-            }
-        });
-
-        ContactNo.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-                if (ContactNumberLabel.equals("")) {
-                    JOptionPane.showMessageDialog(null, "Enter contact Number");
-                }
-            }
-        });
-
-        Address.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (AddressLabel.equals("")) {
-                    JOptionPane.showMessageDialog(null, "Enter Address");
-                }
-            }
-        });
-
-        Address2.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (AddressLabel.equals("")) {
-                    JOptionPane.showMessageDialog(null, "Enter Address");
-                }
-            }
-        });
-
-         */
-
         //Action Listener RegisterJButton
         RegisterJButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Display message
+
+                String name = NameTextField.getText();
+                String email = emailTextField.getText();
+                String contact = ContactTextField.getText();
+                String address = AddressTextField.getText();
+
+                try {
+
+                    FileWriter Writer = new FileWriter("customer.txt");
+                    Writer.write(name + "\n" + email + "\n" + contact + "\n" + address);
+                    Writer.close();
+
+                }
+                catch (Exception exception)
+                {
+                    exception.printStackTrace();
+                }
+
+                // Display message (not sure to use && / ||)
                 if(NameTextField.getText().isEmpty() || emailTextField.getText().isEmpty() ||
                         ContactTextField.getText().isEmpty() || AddressTextField.getText().isEmpty())
                 {
@@ -93,16 +62,11 @@ public class Register extends JFrame {
                     dispose();
                 }
 
+
             }
         });
     }
 
-
-    //Custom Create Component from .form
-    private void createUIComponents() {
-        // TODO: place custom component creation code here
-
-    }
 }
 
 
