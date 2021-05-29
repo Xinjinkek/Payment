@@ -22,6 +22,7 @@ public class Register extends JFrame {
         this.pack();
         this.setVisible(true);
 
+
         //Action Listener RegisterJButton
         RegisterJButton.addActionListener(new ActionListener() {
             @Override
@@ -34,7 +35,7 @@ public class Register extends JFrame {
 
                 try {
 
-                    FileWriter Writer = new FileWriter("customer.txt");
+                    FileWriter Writer = new FileWriter("storage\\customer.txt");
                     Writer.write(name + "\n" + email + "\n" + contact + "\n" + address);
                     Writer.close();
 
@@ -67,6 +68,12 @@ public class Register extends JFrame {
         });
     }
 
+
+    //Custom Create Component from .form
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
+
+    }
 }
 
 

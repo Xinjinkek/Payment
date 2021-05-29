@@ -7,7 +7,6 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class Menu extends JFrame {
-    private JFrame frame;
     private JPanel mainPanel;
     private JPanel panelShopInfo;
     private JLabel labelShopName;
@@ -76,35 +75,33 @@ public class Menu extends JFrame {
 
     final static double food1price = 4.0;
     public Menu(String title) {
-        //super(title);
-        frame = new JFrame(title);
-        frame.setBounds(300,100,800,600);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setContentPane(mainPanel);
-        frame.setVisible(true);
-        //createUIComponents();
-
-
+        super(title);
+        this.setBounds(300,100,800,600);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setContentPane(mainPanel);
+        this.setVisible(true);
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Register register = new Register("Register");
-                frame.dispose();
+                dispose();
             }
         });
        orderButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
             PaymentMethod payment = new PaymentMethod("Pay with MasterCard or Visa");
-            frame.dispose();
+            dispose();
             }
         });
 
-        spinnerChickenBurger.addChangeListener(listener);
-        spinnerBeefBurger.addChangeListener(listener);
+        spinnerChickenBurger.addChangeListener(listenerFood);
+        spinnerBeefBurger.addChangeListener(listenerFood);
+        spinnerBenjo.addChangeListener(listenerFood);
+        spinnerHotdog.addChangeListener(listenerFood);
     }
 
-    ChangeListener listener = new ChangeListener() {
+    ChangeListener listenerFood = new ChangeListener() {
         @Override
         public void stateChanged(ChangeEvent e) {
 
