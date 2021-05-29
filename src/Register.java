@@ -1,29 +1,15 @@
-//Java program
-//Registration Form
-//Using Java String
-
-
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-
 public class Register extends JFrame {
-
     //Declare variable
     private JPanel Panel;
     private JLabel Title;
-    private JLabel Cust_Name;
-    private JLabel Cust_PhoneNo;
-    private JLabel Cust_Add;
-    private JTextField Username;
-    private JTextField ContactNo;
-    private JTextField Address;
+    private JLabel Cust_Name, Cust_email, Cust_PhoneNo, Cust_Add;
+    private JTextField Name, ContactNo, Address, Address2, Email;
     private JButton Register;
-    private JPasswordField Password;
-    private JLabel Cust_Password;
-    private JPasswordField Password2;
-    private JLabel Cust_Password2;
 
     public Register(String title) {
         super(title);
@@ -33,34 +19,21 @@ public class Register extends JFrame {
         this.setVisible(true);
 
 
-        Username.addActionListener(new ActionListener() {
+        Name.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int count = 0;
-
                 if (Cust_Name.equals("")) {
-                    JOptionPane.showMessageDialog(null, "Enter Name");
                 }
+                JOptionPane.showMessageDialog(null, "Enter your Name");
+
             }
         });
 
-        Password.addActionListener(new ActionListener() {
+        Email.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (Cust_Password.equals("")) {
-                    JOptionPane.showMessageDialog(null, "Enter your password");
-                }
-            }
-        });
-
-        Password2.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (Cust_Password2.equals("")) {
-                    JOptionPane.showMessageDialog(null, "Enter your password");
-                }
-                if (Cust_Password2 != Cust_Password) {
-                    JOptionPane.showMessageDialog(null, "Password do not match");
+                if (Cust_email.equals("")) {
+                    JOptionPane.showMessageDialog(null, "Enter your Email");
                 }
             }
         });
@@ -84,12 +57,29 @@ public class Register extends JFrame {
             }
         });
 
+        Address2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (Cust_Add.equals("")) {
+                    JOptionPane.showMessageDialog(null, "Enter Address");
+                }
+            }
+        });
+        //Action Listener Register
         Register.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                // Display message
                 JOptionPane.showMessageDialog(null, "Register Successfully");
             }
         });
+    }
+
+
+    //Custom Create Component from .form
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
+
     }
 }
 
