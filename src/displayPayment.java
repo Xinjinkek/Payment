@@ -2,7 +2,6 @@ import javax.swing.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
-import java.util.List;
 
 public class displayPayment extends JFrame {
 
@@ -13,12 +12,14 @@ public class displayPayment extends JFrame {
     private JLabel titleLabel;
     private JLabel labelNameTitle;
     private JLabel labelContact;
-    private JLabel labelAddress;
+    private JLabel labelEmailAddress;
     private JLabel labelCard;
     private JLabel labelDisplayName;
+    private JLabel labelDisplayEmail;
     private JLabel labelDisplayContact;
-    private JLabel labelDisplayAddress;
     private JLabel labelDisplayCard;
+    private JLabel labelAddress;
+    private JLabel labelDisplayAddress;
 
     public displayPayment(String name, String cardN)
     {
@@ -33,7 +34,7 @@ public class displayPayment extends JFrame {
 
     public void readDetails() {
         try {
-            FileReader reader = new FileReader("D:\\Github\\OOP assignment\\storage\\customer.txt");
+            FileReader reader = new FileReader("customer.txt");
             BufferedReader br = new BufferedReader(reader);
             ArrayList<String> s = new ArrayList<String>();
             String line;
@@ -41,9 +42,9 @@ public class displayPayment extends JFrame {
                 s.add(line);
             }
             labelDisplayName.setText(s.get(0));
-            labelDisplayContact.setText(s.get(1));
-            labelDisplayAddress.setText(s.get(2));
-            labelDisplayCard.setText(s.get(3));
+            labelDisplayEmail.setText(s.get(1));
+            labelDisplayContact.setText(s.get(2));
+            labelDisplayAddress.setText(s.get(3));
             br.close();
         }
         catch(Exception e){
