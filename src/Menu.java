@@ -53,10 +53,11 @@ public class Menu extends JFrame {
 
     public Menu(String title) {
         super(title);
+        this.setBounds(300,100,800,600);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(mainPanel);
-        this.pack();
         this.setVisible(true);
+        this.createUIComponents();
     }
 
     private void createUIComponents() {
@@ -70,6 +71,9 @@ public class Menu extends JFrame {
         tableOrder.getColumnModel().getColumn(0).setPreferredWidth(80);
         tableOrder.getColumnModel().getColumn(1).setPreferredWidth(30);
         tableOrder.getColumnModel().getColumn(2).setPreferredWidth(30);
+        tableOrder.getColumnModel().getColumn(3).setMinWidth(0);
+        tableOrder.getColumnModel().getColumn(3).setMaxWidth(0);
+        tableOrder.setShowGrid(false);
 
         //initialize spinner model
         spinnerChickenBurger = new JSpinner(new SpinnerNumberModel(0,0,10,1));
