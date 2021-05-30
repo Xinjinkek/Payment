@@ -3,7 +3,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
 
-public class displayPayment extends JFrame {
+public class DisplayPayment extends JFrame {
 
     private JPanel mainPanel;
     private JPanel detailsPanel;
@@ -22,7 +22,7 @@ public class displayPayment extends JFrame {
     private JTable menuDisplayTable;
     private JButton confirmOrderButton;
 
-    public displayPayment(String name, String cardN)
+    public DisplayPayment(String name, String cardN)
     {
         super(name);
         labelDisplayCard.setText(cardN);

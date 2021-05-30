@@ -39,7 +39,7 @@ public class PaymentMethod extends JFrame {
                     JOptionPane.showMessageDialog(null, "You may Proceed to Order Summary");
 
                     //Visible the frame in Order Summary
-                    new displayPayment("Order Summary", number).setVisible(true);
+                    new DisplayPayment("Order Summary", number).setVisible(true);
 
                     //To dispose the previous JFrame
                     dispose();
