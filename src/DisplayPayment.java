@@ -1,4 +1,7 @@
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
@@ -21,6 +24,7 @@ public class DisplayPayment extends JFrame {
     private JLabel labelDisplayAddress;
     private JTable menuDisplayTable;
     private JButton confirmOrderButton;
+    private DefaultTableModel model;
 
     public DisplayPayment(String name, String cardN)
     {
@@ -31,10 +35,18 @@ public class DisplayPayment extends JFrame {
         this.setBounds(300,100,200,200);
         this.pack();
         this.setVisible(true);
-        readDetails();
+        readCustDetails();
+
+        confirmOrderButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                JOptionPane.showMessageDialog(null,"Thank you");
+            }
+        });
     }
 
-    public void readDetails() {
+    public void readCustDetails() {
         try {
             FileReader reader = new FileReader("customer.txt");
             BufferedReader br = new BufferedReader(reader);
@@ -54,8 +66,32 @@ public class DisplayPayment extends JFrame {
             }
         }
 
+     public void readOrderDetails(){
+        try {
+            FileReader reader = new FileReader("Order.txt");
+            BufferedReader br = new BufferedReader(reader);
+
+            DefaultTableModel tableModel = (DefaultTableModel)menuDisplayTable.getModel();
+            Object[] lines = br.lines().toArray();
+
+            for (int i = 0; i < lines.length; i++){
+                String[] row = lines[i].toString().split("\t");
+                tableModel.addRow(row);
+            }
+        }
+        catch (Exception exception){
+            exception.printStackTrace();
+        }
+     }
+
     private void createUIComponents() {
         // TODO: place custom component creation code here
-
+        model = new DefaultTableModel(0, 0);
+        final String header[] = new String[] { "Item", "Qty", "Price"};
+        model.setColumnIdentifiers(header);
+        model.addRow(header);
+        menuDisplayTable = new JTable();
+        menuDisplayTable.setModel(model);
+        readOrderDetails();
     }
 }

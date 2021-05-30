@@ -359,6 +359,7 @@
               <component id="70a0c" class="javax.swing.JTable" binding="tableOrder" custom-create="true">
                 <constraints/>
                 <properties>
+                  <autoscrolls value="true"/>
                   <showHorizontalLines value="false"/>
                   <showVerticalLines value="false"/>
                   <updateSelectionOnSort value="true"/>

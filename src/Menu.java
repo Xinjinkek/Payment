@@ -1,5 +1,3 @@
-import com.sun.tools.javac.Main;
-
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -7,9 +5,9 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
+import java.text.DecimalFormat;
 
 public class Menu extends JFrame {
     private JPanel mainPanel;
@@ -61,7 +59,7 @@ public class Menu extends JFrame {
     private JPanel panelTotal;
     private JButton buttonReset;
     private JScrollPane scrollPaneOrder;
-    public DefaultTableModel dtm;
+    public DefaultTableModel model;
 
     double food1, food2, food3, food4;
     double totalFood1, totalFood2, totalFood3, totalFood4;
@@ -75,11 +73,12 @@ public class Menu extends JFrame {
     double drinksTotal;
     double sidesTotal;
 
-    final static int numberOfFoods = 4;
-    final static int numberOfDrinks = 4;
-    final static int numberOfSides = 6;
+    final int numberOfFoods = 4;
+    final int numberOfDrinks = 4;
+    final int numberOfSides = 6;
 
-    final static double food1price = 4.0;
+    DecimalFormat df = new DecimalFormat("0.00");
+
     public Menu(String title) {
         super(title);
         this.setBounds(300,100,800,600);
@@ -96,18 +95,33 @@ public class Menu extends JFrame {
        orderButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //go to payment
-                new PaymentMethod("Pay with MasterCard or Visa");
-                dispose();
+                if (textFieldTotal.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(null, "No order received!");
+                }
+                else {
+                    //go to payment
+                    new PaymentMethod("Pay with MasterCard or Visa");
+                    dispose();
 
-                //save Order detail into a file
-                try {
-                    FileWriter writer = new FileWriter("Order.txt");
-                    BufferedWriter bw = new BufferedWriter(writer);
+                    //save Order detail into a file
+                    try {
+                        FileWriter writer = new FileWriter("Order.txt");
+                        BufferedWriter bw = new BufferedWriter(writer);
+
+                        for (int i = 0; i < model.getRowCount(); i++){
+                            for (int j = 0; j < model.getColumnCount() - 1; j++){
+                                bw.write(tableOrder.getValueAt(i,j).toString() + "\t");
+                            }
+                            bw.newLine();
+                        }
+                        bw.write("Total: " + textFieldTotal.getText());
+                        bw.close();
+                    }
+                    catch (Exception ex){
+                        ex.printStackTrace();
+                    }
                 }
-                catch (Exception ex){
-                    ex.printStackTrace();
-                }
+
 
             }
         });
@@ -145,35 +159,35 @@ public class Menu extends JFrame {
             final int quantity = (int) ((JSpinner) e.getSource()).getValue();
             final int rows = tableOrder.getRowCount();
             for (int row = 0; row < rows; row++) {
-                if (dtm.getValueAt(row, 3) == e.getSource()) {
-                    if (dtm.getValueAt(row, 0).equals("Chicken Burger")) {
-                        dtm.setValueAt(quantity, row, 1); // obj, row, column
-                        dtm.setValueAt(food1 * quantity, row, 2);
+                if (model.getValueAt(row, 3) == e.getSource()) {
+                    if (model.getValueAt(row, 0).equals("Chicken Burger")) {
+                        model.setValueAt(quantity, row, 1); // obj, row, column
+                        model.setValueAt("RM " + df.format(food1 * quantity), row, 2);
                         totalFood1 = food1 * quantity;
 
-                    } else if (dtm.getValueAt(row, 0).equals("Beef Burger")) {
+                    } else if (model.getValueAt(row, 0).equals("Beef Burger")) {
 
-                        dtm.setValueAt(quantity, row, 1);
-                        dtm.setValueAt(food2 * quantity, row, 2);
+                        model.setValueAt(quantity, row, 1);
+                        model.setValueAt("RM " + df.format(food2 * quantity), row, 2);
                         totalFood2 = food2 * quantity;
-                    } else if (dtm.getValueAt(row, 0).equals("Benjo")) {
+                    } else if (model.getValueAt(row, 0).equals("Benjo")) {
 
-                        dtm.setValueAt(quantity, row, 1);
-                        dtm.setValueAt(food3 * quantity, row, 2);
+                        model.setValueAt(quantity, row, 1);
+                        model.setValueAt("RM " + df.format(food3 * quantity), row, 2);
                         totalFood3 = food3 * quantity;
-                    } else if (dtm.getValueAt(row, 0).equals("Hotdog")) {
+                    } else if (model.getValueAt(row, 0).equals("Hotdog")) {
 
-                        dtm.setValueAt(quantity, row, 1);
-                        dtm.setValueAt(food4 * quantity, row, 2);
+                        model.setValueAt(quantity, row, 1);
+                        model.setValueAt("RM " + df.format(food4 * quantity), row, 2);
                         totalFood4 = food4 * quantity;
                     }
 
                     if (quantity == 0) {
-                        dtm.removeRow(row);
+                        model.removeRow(row);
                     }
                     foodTotal = totalFood1 + totalFood2 + totalFood3 + totalFood4;
                     total = foodTotal + drinksTotal + sidesTotal;
-                    textFieldTotal.setText(total + "");
+                    textFieldTotal.setText("RM " + df.format(total) + "");
                     return;
                 }
            }
@@ -184,8 +198,8 @@ public class Menu extends JFrame {
                     totalFood1 = food1;
                     foodTotal = totalFood1 + totalFood2 + totalFood3 + totalFood4;
                     total = foodTotal + drinksTotal + sidesTotal;
-                    textFieldTotal.setText(total + "");
-                    dtm.addRow(new Object[] { labelChickenBurger.getText(), quantity, food1, spinnerChickenBurger });
+                    textFieldTotal.setText("RM " + df.format(total) + "");
+                    model.addRow(new Object[] { labelChickenBurger.getText(), quantity, "RM " + df.format(food1), spinnerChickenBurger });
                     return;
                 }
                 else if (spinnerBeefBurger == e.getSource()) {
@@ -193,8 +207,8 @@ public class Menu extends JFrame {
                     totalFood2 = food2;
                     foodTotal = totalFood1 + totalFood2 + totalFood3 + totalFood4;
                     total = foodTotal + drinksTotal + sidesTotal;
-                    textFieldTotal.setText(total + "");
-                    dtm.addRow(new Object[] { labelBeefBurger.getText(), quantity, food2, spinnerBeefBurger });
+                    textFieldTotal.setText("RM " + df.format(total) + "");
+                    model.addRow(new Object[] { labelBeefBurger.getText(), quantity, "RM " + df.format(food2), spinnerBeefBurger });
                     return;
                 }
                 else if (spinnerBenjo == e.getSource()) {
@@ -202,8 +216,8 @@ public class Menu extends JFrame {
                     totalFood3 = food3;
                     foodTotal = totalFood1 + totalFood2 + totalFood3 + totalFood4;
                     total = foodTotal + drinksTotal + sidesTotal;
-                    textFieldTotal.setText(total + "");
-                    dtm.addRow(new Object[] { labelBenjo.getText(), quantity, food3, spinnerBenjo });
+                    textFieldTotal.setText("RM " + df.format(total) + "");
+                    model.addRow(new Object[] { labelBenjo.getText(), quantity, "RM " + df.format(food3), spinnerBenjo });
                     return;
                 }
                 else if (spinnerHotdog == e.getSource()) {
@@ -211,8 +225,8 @@ public class Menu extends JFrame {
                     totalFood4 = food4;
                     foodTotal = totalFood1 + totalFood2 + totalFood3 + totalFood4;
                     total = foodTotal + drinksTotal + sidesTotal;
-                    textFieldTotal.setText(total + "");
-                    dtm.addRow(new Object[] { labelHotdog.getText(), quantity, food4, spinnerHotdog });
+                    textFieldTotal.setText("RM " + df.format(total) + "");
+                    model.addRow(new Object[] { labelHotdog.getText(), quantity, "RM " + df.format(food4), spinnerHotdog });
                     return;
                 }
 
@@ -226,35 +240,35 @@ public class Menu extends JFrame {
             final int quantity = (int) ((JSpinner) e.getSource()).getValue();
             final int rows = tableOrder.getRowCount();
             for (int row = 0; row < rows; row++) {
-                if (dtm.getValueAt(row, 3) == e.getSource()) {
-                    if (dtm.getValueAt(row, 0).equals("Coke")) {
-                        dtm.setValueAt(quantity, row, 1); // obj, row, column
-                        dtm.setValueAt(drinks1 * quantity, row, 2);
+                if (model.getValueAt(row, 3) == e.getSource()) {
+                    if (model.getValueAt(row, 0).equals("Coke")) {
+                        model.setValueAt(quantity, row, 1); // obj, row, column
+                        model.setValueAt("RM " + df.format(drinks1 * quantity), row, 2);
                         totalDrinks1 = drinks1 * quantity;
 
-                    } else if (dtm.getValueAt(row, 0).equals("100 Plus")) {
+                    } else if (model.getValueAt(row, 0).equals("100 Plus")) {
 
-                        dtm.setValueAt(quantity, row, 1);
-                        dtm.setValueAt(drinks2 * quantity, row, 2);
+                        model.setValueAt(quantity, row, 1);
+                        model.setValueAt("RM " + df.format(drinks2 * quantity), row, 2);
                         totalDrinks2 = drinks2 * quantity;
-                    } else if (dtm.getValueAt(row, 0).equals("Sprite")) {
+                    } else if (model.getValueAt(row, 0).equals("Sprite")) {
 
-                        dtm.setValueAt(quantity, row, 1);
-                        dtm.setValueAt(drinks3 * quantity, row, 2);
+                        model.setValueAt(quantity, row, 1);
+                        model.setValueAt("RM " + df.format(drinks3 * quantity), row, 2);
                         totalDrinks3 = drinks3 * quantity;
-                    } else if (dtm.getValueAt(row, 0).equals("Fanta")) {
+                    } else if (model.getValueAt(row, 0).equals("Fanta")) {
 
-                        dtm.setValueAt(quantity, row, 1);
-                        dtm.setValueAt(drinks4 * quantity, row, 2);
+                        model.setValueAt(quantity, row, 1);
+                        model.setValueAt("RM " + df.format(drinks4 * quantity), row, 2);
                         totalDrinks4 = drinks4 * quantity;
                     }
 
                     if (quantity == 0) {
-                        dtm.removeRow(row);
+                        model.removeRow(row);
                     }
                     drinksTotal = totalDrinks1 + totalDrinks2 + totalDrinks3 + totalDrinks4;
                     total = foodTotal + drinksTotal + sidesTotal;
-                    textFieldTotal.setText(total + "");
+                    textFieldTotal.setText("RM " + df.format(total) + "");
                     return;
                 }
             }
@@ -265,8 +279,8 @@ public class Menu extends JFrame {
                     totalDrinks1 = drinks1;
                     drinksTotal = totalDrinks1 + totalDrinks2 + totalDrinks3 + totalDrinks4;
                     total = foodTotal + drinksTotal + sidesTotal;
-                    textFieldTotal.setText(total + "");
-                    dtm.addRow(new Object[] { labelCoke.getText(), quantity, drinks1, spinnerCoke});
+                    textFieldTotal.setText("RM " + df.format(total) + "");
+                    model.addRow(new Object[] { labelCoke.getText(), quantity, "RM " + df.format(drinks1), spinnerCoke});
                     return;
                 }
                 else if (spinner100Plus == e.getSource()) {
@@ -274,8 +288,8 @@ public class Menu extends JFrame {
                     totalDrinks2 = drinks2;
                     drinksTotal = totalDrinks1 + totalDrinks2 + totalDrinks3 + totalDrinks4;
                     total = foodTotal + drinksTotal + sidesTotal;
-                    textFieldTotal.setText(total + "");
-                    dtm.addRow(new Object[] { label100Plus.getText(), quantity, drinks2, spinner100Plus});
+                    textFieldTotal.setText("RM " + df.format(total) + "");
+                    model.addRow(new Object[] { label100Plus.getText(), quantity, "RM " + df.format(drinks2), spinner100Plus});
                     return;
                 }
                 else if (spinnerSprite == e.getSource()) {
@@ -283,8 +297,8 @@ public class Menu extends JFrame {
                     totalDrinks3 = drinks3;
                     drinksTotal = totalDrinks1 + totalDrinks2 + totalDrinks3 + totalDrinks4;
                     total = foodTotal + drinksTotal + sidesTotal;
-                    textFieldTotal.setText(total + "");
-                    dtm.addRow(new Object[] { labelSprite.getText(), quantity, drinks3, spinnerSprite});
+                    textFieldTotal.setText("RM " + df.format(total) + "");
+                    model.addRow(new Object[] { labelSprite.getText(), quantity, "RM " + df.format(drinks3), spinnerSprite});
                     return;
                 }
                 else if (spinnerFanta == e.getSource()) {
@@ -292,8 +306,8 @@ public class Menu extends JFrame {
                     totalDrinks4 = drinks4;
                     drinksTotal = totalDrinks1 + totalDrinks2 + totalDrinks3 + totalDrinks4;
                     total = foodTotal + drinksTotal + sidesTotal;
-                    textFieldTotal.setText(total + "");
-                    dtm.addRow(new Object[] { labelFanta.getText(), quantity, drinks4, spinnerFanta});
+                    textFieldTotal.setText("RM " + df.format(total) + "");
+                    model.addRow(new Object[] { labelFanta.getText(), quantity, "RM " + df.format(drinks4), spinnerFanta});
                     return;
                 }
 
@@ -308,45 +322,45 @@ public class Menu extends JFrame {
             final int quantity = (int) ((JSpinner) e.getSource()).getValue();
             final int rows = tableOrder.getRowCount();
             for (int row = 0; row < rows; row++) {
-                if (dtm.getValueAt(row, 3) == e.getSource()) {
-                    if (dtm.getValueAt(row, 0).equals("Fries")) {
-                        dtm.setValueAt(quantity, row, 1); // obj, row, column
-                        dtm.setValueAt(sides1 * quantity, row, 2);
+                if (model.getValueAt(row, 3) == e.getSource()) {
+                    if (model.getValueAt(row, 0).equals("Fries")) {
+                        model.setValueAt(quantity, row, 1); // obj, row, column
+                        model.setValueAt("RM " + df.format(sides1 * quantity), row, 2);
                         totalSides1 = sides1 * quantity;
 
-                    } else if (dtm.getValueAt(row, 0).equals("Onion Rings")) {
+                    } else if (model.getValueAt(row, 0).equals("Onion Rings")) {
 
-                        dtm.setValueAt(quantity, row, 1);
-                        dtm.setValueAt(sides2 * quantity, row, 2);
+                        model.setValueAt(quantity, row, 1);
+                        model.setValueAt("RM " + df.format(sides2 * quantity), row, 2);
                         totalSides2 = sides2 * quantity;
-                    } else if (dtm.getValueAt(row, 0).equals("Squid Rings")) {
+                    } else if (model.getValueAt(row, 0).equals("Squid Rings")) {
 
-                        dtm.setValueAt(quantity, row, 1);
-                        dtm.setValueAt(sides3 * quantity, row, 2);
+                        model.setValueAt(quantity, row, 1);
+                        model.setValueAt("RM " + df.format(sides3 * quantity), row, 2);
                         totalSides3 = sides3 * quantity;
-                    } else if (dtm.getValueAt(row, 0).equals("Curly Fries")) {
+                    } else if (model.getValueAt(row, 0).equals("Curly Fries")) {
 
-                        dtm.setValueAt(quantity, row, 1);
-                        dtm.setValueAt(sides4 * quantity, row, 2);
+                        model.setValueAt(quantity, row, 1);
+                        model.setValueAt("RM " + df.format(sides4 * quantity), row, 2);
                         totalSides4 = sides4 * quantity;
-                    }else if (dtm.getValueAt(row, 0).equals("Nuggets")) {
+                    }else if (model.getValueAt(row, 0).equals("Nuggets")) {
 
-                        dtm.setValueAt(quantity, row, 1);
-                        dtm.setValueAt(sides5 * quantity, row, 2);
+                        model.setValueAt(quantity, row, 1);
+                        model.setValueAt("RM " + df.format(sides5 * quantity), row, 2);
                         totalSides5 = sides5 * quantity;
-                    }else if (dtm.getValueAt(row, 0).equals("Wedges")) {
+                    }else if (model.getValueAt(row, 0).equals("Wedges")) {
 
-                        dtm.setValueAt(quantity, row, 1);
-                        dtm.setValueAt(sides6 * quantity, row, 2);
+                        model.setValueAt(quantity, row, 1);
+                        model.setValueAt("RM " + df.format(sides6 * quantity), row, 2);
                         totalSides6 = sides6 * quantity;
                     }
 
                     if (quantity == 0) {
-                        dtm.removeRow(row);
+                        model.removeRow(row);
                     }
                     sidesTotal = totalSides1 + totalSides2 + totalSides3 + totalSides4 + totalSides5 + totalSides6;
                     total = foodTotal + drinksTotal + sidesTotal;
-                    textFieldTotal.setText(total + "");
+                    textFieldTotal.setText("RM " + df.format(total) + "");
                     return;
                 }
             }
@@ -357,8 +371,8 @@ public class Menu extends JFrame {
                     totalSides1 = sides1;
                     sidesTotal = totalSides1 + totalSides2 + totalSides3 + totalSides4 + totalSides5 + totalSides6;
                     total = foodTotal + drinksTotal + sidesTotal;
-                    textFieldTotal.setText(total + "");
-                    dtm.addRow(new Object[] { labelFries.getText(), quantity, sides1, spinnerFries});
+                    textFieldTotal.setText("RM " + df.format(total) + "");
+                    model.addRow(new Object[] { labelFries.getText(), quantity, "RM " + df.format(sides1), spinnerFries});
                     return;
                 }
                 else if (spinnerOnionRings == e.getSource()) {
@@ -366,8 +380,8 @@ public class Menu extends JFrame {
                     totalSides2 = sides2;
                     sidesTotal = totalSides1 + totalSides2 + totalSides3 + totalSides4 + totalSides5 + totalSides6;
                     total = foodTotal + drinksTotal + sidesTotal;
-                    textFieldTotal.setText(total + "");
-                    dtm.addRow(new Object[] { labelOnionRings.getText(), quantity, sides2, spinnerOnionRings});
+                    textFieldTotal.setText("RM " + df.format(total) + "");
+                    model.addRow(new Object[] { labelOnionRings.getText(), quantity, "RM " + df.format(sides2), spinnerOnionRings});
                     return;
                 }
                 else if (spinnerSquidRings == e.getSource()) {
@@ -375,8 +389,8 @@ public class Menu extends JFrame {
                     totalSides3 =  sides3;
                     sidesTotal = totalSides1 + totalSides2 + totalSides3 + totalSides4 + totalSides5 + totalSides6;
                     total = foodTotal + drinksTotal + sidesTotal;
-                    textFieldTotal.setText(total + "");
-                    dtm.addRow(new Object[] { labelSquidRings.getText(), quantity, sides3, spinnerSquidRings});
+                    textFieldTotal.setText("RM " + df.format(total) + "");
+                    model.addRow(new Object[] { labelSquidRings.getText(), quantity, "RM " + df.format(sides3), spinnerSquidRings});
                     return;
                 }
                 else if (spinnerCurlyFries == e.getSource()) {
@@ -384,8 +398,8 @@ public class Menu extends JFrame {
                     totalSides4 = sides4;
                     sidesTotal = totalSides1 + totalSides2 + totalSides3 + totalSides4 + totalSides5 + totalSides6;
                     total = foodTotal + drinksTotal + sidesTotal;
-                    textFieldTotal.setText(total + "");
-                    dtm.addRow(new Object[] { labelCurlyFries.getText(), quantity, sides4, spinnerCurlyFries});
+                    textFieldTotal.setText("RM " + df.format(total) + "");
+                    model.addRow(new Object[] { labelCurlyFries.getText(), quantity, "RM " + df.format(sides4), spinnerCurlyFries});
                     return;
                 }
                 else if (spinnerNuggets == e.getSource()) {
@@ -393,8 +407,8 @@ public class Menu extends JFrame {
                     totalSides5 = sides5;
                     sidesTotal = totalSides1 + totalSides2 + totalSides3 + totalSides4 + totalSides5 + totalSides6;
                     total = foodTotal + drinksTotal + sidesTotal;
-                    textFieldTotal.setText(total + "");
-                    dtm.addRow(new Object[] { labelNuggets.getText(), quantity, sides5, spinnerNuggets});
+                    textFieldTotal.setText("RM " + df.format(total) + "");
+                    model.addRow(new Object[] { labelNuggets.getText(), quantity, "RM " + df.format(sides5), spinnerNuggets});
                     return;
                 }
                 else if (spinnerWedges == e.getSource()) {
@@ -402,8 +416,8 @@ public class Menu extends JFrame {
                     totalSides6 = sides6;
                     sidesTotal = totalSides1 + totalSides2 + totalSides3 + totalSides4 + totalSides5 + totalSides6;
                     total = foodTotal + drinksTotal + sidesTotal;
-                    textFieldTotal.setText(total + "");
-                    dtm.addRow(new Object[] { labelWedges.getText(), quantity, sides6, spinnerWedges});
+                    textFieldTotal.setText("RM " + df.format(total) + "");
+                    model.addRow(new Object[] { labelWedges.getText(), quantity, "RM " + df.format(sides6), spinnerWedges});
                     return;
                 }
             }
@@ -412,11 +426,12 @@ public class Menu extends JFrame {
 
      void createUIComponents() {
         // TODO: place custom component creation code here
-         dtm = new DefaultTableModel(0, 0);
+         model = new DefaultTableModel(0, 0);
          final String header[] = new String[] { "Item", "Qty", "Price", "Spinner" };
-         dtm.setColumnIdentifiers(header);
+         model.setColumnIdentifiers(header);
+         //model.addRow(header);
          tableOrder = new JTable();
-         tableOrder.setModel(dtm);
+         tableOrder.setModel(model);
          tableOrder.getColumnModel().getColumn(0).setPreferredWidth(80);
          tableOrder.getColumnModel().getColumn(1).setPreferredWidth(30);
          tableOrder.getColumnModel().getColumn(2).setPreferredWidth(30);

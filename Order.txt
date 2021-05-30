@@ -1,0 +1,2 @@
+Chicken Burger	1	RM 10.00	
+Total: RM 10.00
