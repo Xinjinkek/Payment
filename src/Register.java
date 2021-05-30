@@ -131,6 +131,59 @@ public class Register extends JFrame {
 
 
 //haha
+        AddressTextField.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                super.keyPressed(e);
+                if(e.getKeyCode()== KeyEvent.VK_ENTER){
+                    //To save info into text file
+                    //Info is retrieved from the user input
+                    String name = NameTextField.getText();
+                    String email = emailTextField.getText();
+                    String contact = ContactTextField.getText();
+                    String address = AddressTextField.getText();
+                    String phoneNumber = ContactTextField.getText();
+                    int length = phoneNumber.length();
+
+                    try {
+
+                        FileWriter Writer = new FileWriter("customer.txt");
+                        Writer.write(name + "\n" + email + "\n" + contact + "\n" + address);
+                        Writer.close();
+
+                    }
+                    catch (Exception exception)
+                    {
+                        exception.printStackTrace();
+                    }
+
+                    // To display message
+                    if(NameTextField.getText().isEmpty() || emailTextField.getText().isEmpty() ||
+                            ContactTextField.getText().isEmpty() || AddressTextField.getText().isEmpty())
+                    {
+                        JOptionPane.showMessageDialog(null, "Please Fill in the Empty Space");
+                    }
+                    else if(length != 10 && length!= 11 )
+                    {
+                        JOptionPane.showMessageDialog(null, "Contact number invalid");
+                    }
+                    else
+                    {
+                        //Display Register Successful Message
+                        JOptionPane.showMessageDialog(null, "Register Successful!");
+
+                        //Move to menu Window
+                        new Menu("Main Menu").setVisible(true);
+
+                        //Dispose old Window
+                        dispose();
+                    }
+
+                }
+
+                }
+
+        });
     }
 
 
