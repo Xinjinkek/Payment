@@ -3,6 +3,7 @@ import com.sun.tools.javac.Main;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -56,6 +57,7 @@ public class Menu extends JFrame {
     private JTable tableOrder;
     private JPanel panelTotal;
     private JButton buttonReset;
+    private JScrollPane scrollPaneOrder;
     public DefaultTableModel dtm;
 
     double food1, food2, food3, food4;
@@ -396,18 +398,24 @@ public class Menu extends JFrame {
 
      void createUIComponents() {
         // TODO: place custom component creation code here
-        dtm = new DefaultTableModel(0, 0);
-        final String header[] = new String[] { "Item", "Qty", "Price", "Spinner" };
-        dtm.setColumnIdentifiers(header);
-        dtm.addRow(header);
-        tableOrder = new JTable();
-        tableOrder.setModel(dtm);
-        tableOrder.getColumnModel().getColumn(0).setPreferredWidth(80);
-        tableOrder.getColumnModel().getColumn(1).setPreferredWidth(30);
-        tableOrder.getColumnModel().getColumn(2).setPreferredWidth(30);
-        tableOrder.getColumnModel().getColumn(3).setMinWidth(0);
-        tableOrder.getColumnModel().getColumn(3).setMaxWidth(0);
-        tableOrder.setShowGrid(false);
+         dtm = new DefaultTableModel(0, 0);
+         final String header[] = new String[] { "Item", "Qty", "Price", "Spinner" };
+         dtm.setColumnIdentifiers(header);
+         tableOrder = new JTable();
+         tableOrder.setModel(dtm);
+         tableOrder.getColumnModel().getColumn(0).setPreferredWidth(80);
+         tableOrder.getColumnModel().getColumn(1).setPreferredWidth(30);
+         tableOrder.getColumnModel().getColumn(2).setPreferredWidth(30);
+         tableOrder.getColumnModel().getColumn(3).setMinWidth(0);
+         tableOrder.getColumnModel().getColumn(3).setMaxWidth(0);
+         tableOrder.setShowGrid(false);
+         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+         centerRenderer.setHorizontalAlignment( JLabel.CENTER );
+         tableOrder.getColumnModel().getColumn(0).setCellRenderer( centerRenderer );
+         tableOrder.getColumnModel().getColumn(1).setCellRenderer( centerRenderer );
+         tableOrder.getColumnModel().getColumn(2).setCellRenderer( centerRenderer );
+
+
 
         //initialize spinner model
         spinnerChickenBurger = new JSpinner(new SpinnerNumberModel(0,0,10,1));
