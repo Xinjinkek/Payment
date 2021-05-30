@@ -41,7 +41,8 @@ public class DisplayPayment extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                JOptionPane.showMessageDialog(null,"Thank you");
+                JOptionPane.showMessageDialog(null,"Thank you! Please wait while we are " +
+                        "preparing your order !");
             }
         });
     }
