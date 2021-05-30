@@ -81,9 +81,10 @@ public class Menu extends JFrame {
 
     public Menu(String title) {
         super(title);
-        this.setBounds(300,100,800,600);
+        this.setSize(800,600);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(mainPanel);
+        this.setLocationRelativeTo(null);
         this.setVisible(true);
         backButton.addActionListener(new ActionListener() {
             @Override

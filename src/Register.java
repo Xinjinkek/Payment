@@ -22,6 +22,7 @@ public class Register extends JFrame {
         this.setContentPane(Panel);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.pack();
+        this.setLocationRelativeTo(null);
         this.setVisible(true);
 
         //Key Listener for the Name input validation

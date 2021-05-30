@@ -20,7 +20,8 @@ public class PaymentMethod extends JFrame {
         super(title);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(main);
-        this.pack();
+        this.setSize(350,200);
+        this.setLocationRelativeTo(null);
         this.setVisible(true);
 
 

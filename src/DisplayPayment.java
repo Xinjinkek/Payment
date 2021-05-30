@@ -34,8 +34,10 @@ public class DisplayPayment extends JFrame {
         labelDisplayCard.setText(cardN);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(mainPanel);
-        this.setBounds(300,100,200,200);
-        this.pack();
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        //this.setUndecorated(false);
+        this.setVisible(true);
+        this.setLocationRelativeTo(null);
         this.setVisible(true);
         readCustDetails();
 
