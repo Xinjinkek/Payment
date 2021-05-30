@@ -6,23 +6,14 @@
       <xy x="22" y="15" width="704" height="390"/>
     </constraints>
     <properties>
-      <opaque value="false"/>
+      <background color="-1197159"/>
+      <opaque value="true"/>
     </properties>
     <border type="none"/>
     <children>
-      <component id="a4a65" class="javax.swing.JLabel" binding="NameLabel">
-        <constraints>
-          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
-            <preferred-size width="64" height="16"/>
-          </grid>
-        </constraints>
-        <properties>
-          <text value="Name:"/>
-        </properties>
-      </component>
       <component id="655cc" class="javax.swing.JLabel" binding="EmailLabel">
         <constraints>
-          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="1" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Email:"/>
@@ -40,11 +31,12 @@
       </hspacer>
       <component id="dfa35" class="javax.swing.JLabel" binding="Title">
         <constraints>
-          <grid row="0" column="1" row-span="1" col-span="4" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+          <grid row="0" column="1" row-span="1" col-span="4" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="6" use-parent-layout="false">
             <preferred-size width="275" height="156"/>
           </grid>
         </constraints>
         <properties>
+          <background color="-1197159"/>
           <font size="28" style="1"/>
           <text value="Registration Form"/>
         </properties>
@@ -56,7 +48,7 @@
       </vspacer>
       <component id="7dc75" class="javax.swing.JLabel" binding="ContactNumberLabel">
         <constraints>
-          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="1" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Contact Number:"/>
@@ -64,7 +56,7 @@
       </component>
       <component id="adb6c" class="javax.swing.JLabel" binding="AddressLabel">
         <constraints>
-          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="1" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Address:"/>
@@ -110,6 +102,16 @@
         </constraints>
         <properties>
           <text value=""/>
+        </properties>
+      </component>
+      <component id="a4a65" class="javax.swing.JLabel" binding="NameLabel">
+        <constraints>
+          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="1" use-parent-layout="false">
+            <preferred-size width="64" height="16"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value="Name:"/>
         </properties>
       </component>
     </children>
