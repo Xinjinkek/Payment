@@ -48,8 +48,11 @@ public class Register extends JFrame {
         ContactTextField.addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
+                String phoneNumber = ContactTextField.getText();
+                int length = phoneNumber.length();
                 super.keyTyped(e);
                 char c = e.getKeyChar();
+
                 if(Character.isLetter(c))
                 {
                     ContactTextField.setEditable(false);
@@ -57,7 +60,16 @@ public class Register extends JFrame {
                 }
                 else
                 {
-                    ContactTextField.setEditable(true);
+                    if(length < 11)
+                    {
+                        ContactTextField.setEditable(true);
+                    }
+                    else
+                    {
+                        ContactTextField.setEditable(false);
+                        JOptionPane.showMessageDialog(null, "You've already exceed the number");
+                    }
+
                 }
 
             }
@@ -65,6 +77,7 @@ public class Register extends JFrame {
 
         //Action Listener RegisterJButton
         //To display message of successful or failure of registration
+        //To save information of registration into text file
         RegisterJButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
