@@ -35,7 +35,6 @@ public class DisplayPayment extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(mainPanel);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        //this.setUndecorated(false);
         this.setVisible(true);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
