@@ -31,18 +31,28 @@ public class PaymentMethod extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String number = textFieldCardNumber.getText();
                 String name = (String) comboBoxCardChoice.getSelectedItem();
+                String cardNumber = textFieldCardNumber.getText();
+                int length = cardNumber.length();
 
                 cardValidate card = new cardValidate(name);
                 if (card.validateNumber(number))
                 {
-                    //Display validation correct for card input
-                    JOptionPane.showMessageDialog(null, "You may Proceed to Order Summary");
+                    if(length != 16)
+                    {
+                        JOptionPane.showMessageDialog(null, "Card Invalid, Please Retype!");
+                    }
+                    else
+                    {
+                        //Display validation correct for card input
+                        JOptionPane.showMessageDialog(null, "You may Proceed to Order Summary");
 
-                    //Visible the frame in Order Summary
-                    new DisplayPayment("Order Summary", number).setVisible(true);
+                        //Visible the frame in Order Summary
+                        new DisplayPayment("Order Summary", number).setVisible(true);
 
-                    //To dispose the previous JFrame
-                    dispose();
+                        //To dispose the previous JFrame
+                        dispose();
+                    }
+
                 }
                 else
                 {
@@ -57,8 +67,6 @@ public class PaymentMethod extends JFrame {
         textFieldCardNumber.addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
-                String cardNumber = textFieldCardNumber.getText();
-                int length = cardNumber.length();
                 super.keyTyped(e);
                 char c = e.getKeyChar();
 
@@ -69,16 +77,7 @@ public class PaymentMethod extends JFrame {
                 }
                 else
                 {
-                    if(length < 16)
-                    {
-                        textFieldCardNumber.setEditable(true);
-                    }
-                    else
-                    {
-                        textFieldCardNumber.setEditable(false);
-                        JOptionPane.showMessageDialog(null, "You've already exceed the number");
-                    }
-
+                    textFieldCardNumber.setEditable(true);
                 }
 
             }

@@ -60,17 +60,18 @@ public class Register extends JFrame {
                 }
                 else
                 {
-                    if(length < 11)
-                    {
-                        ContactTextField.setEditable(true);
-                    }
-                    else
-                    {
-                        ContactTextField.setEditable(false);
-                        JOptionPane.showMessageDialog(null, "You've already exceed the number");
-                    }
+                    ContactTextField.setEditable(true);
 
                 }
+                /*if(length < 11)
+                {
+                    ContactTextField.setEditable(true);
+                }
+                else
+                {
+                    ContactTextField.setEditable(false);
+                    JOptionPane.showMessageDialog(null, "You've already exceed the number");
+                }*/
 
             }
         });
@@ -88,6 +89,8 @@ public class Register extends JFrame {
                 String email = emailTextField.getText();
                 String contact = ContactTextField.getText();
                 String address = AddressTextField.getText();
+                String phoneNumber = ContactTextField.getText();
+                int length = phoneNumber.length();
 
                 try {
 
@@ -105,7 +108,11 @@ public class Register extends JFrame {
                 if(NameTextField.getText().isEmpty() || emailTextField.getText().isEmpty() ||
                         ContactTextField.getText().isEmpty() || AddressTextField.getText().isEmpty())
                 {
-                    JOptionPane.showMessageDialog(null, "Please Fill in the empty Space");
+                    JOptionPane.showMessageDialog(null, "Please Fill in the Empty Space");
+                }
+                else if(length != 10 && length!= 11 )
+                {
+                    JOptionPane.showMessageDialog(null, "Contact number invalid");
                 }
                 else
                 {
