@@ -349,7 +349,7 @@
               <text value="Food Orders"/>
             </properties>
           </component>
-          <scrollpane id="b5b51">
+          <scrollpane id="b5b51" binding="scrollPaneOrder">
             <constraints>
               <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -359,7 +359,6 @@
               <component id="70a0c" class="javax.swing.JTable" binding="tableOrder" custom-create="true">
                 <constraints/>
                 <properties>
-                  <autoCreateRowSorter value="false"/>
                   <showHorizontalLines value="false"/>
                   <showVerticalLines value="false"/>
                   <updateSelectionOnSort value="true"/>
