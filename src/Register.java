@@ -24,6 +24,25 @@ public class Register extends JFrame {
         this.pack();
         this.setVisible(true);
 
+        //Name input validation
+        //Only allow alphabet to be entered
+        NameTextField.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                super.keyTyped(e);
+                char c = e.getKeyChar();
+                if(Character.isLetter(c) || Character.isWhitespace(c) || Character.isISOControl(c))
+                {
+                    NameTextField.setEditable(true);
+                }
+                else
+                {
+                    NameTextField.setEditable(false);
+                    JOptionPane.showMessageDialog(null, "Please Enter Alphabet Only");
+                }
+            }
+        });
+
         //Contact number input validation
         //Only allow numbers to be entered
         ContactTextField.addKeyListener(new KeyAdapter() {
@@ -34,7 +53,7 @@ public class Register extends JFrame {
                 if(Character.isLetter(c))
                 {
                     ContactTextField.setEditable(false);
-                    JOptionPane.showMessageDialog(null,"Please enter Number only");
+                    JOptionPane.showMessageDialog(null,"Please Enter Number Only");
                 }
                 else
                 {
@@ -45,6 +64,7 @@ public class Register extends JFrame {
         });
 
         //Action Listener RegisterJButton
+        //To display message of successful or failure of registration
         RegisterJButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -87,6 +107,7 @@ public class Register extends JFrame {
 
             }
         });
+
 
 
     }
