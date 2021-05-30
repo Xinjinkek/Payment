@@ -1,6 +1,8 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.io.FileWriter;
 
 public class Register extends JFrame {
@@ -22,12 +24,32 @@ public class Register extends JFrame {
         this.pack();
         this.setVisible(true);
 
+        //Contact number input validation
+        //Only allow numbers to be entered
+        ContactTextField.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                super.keyTyped(e);
+                char c = e.getKeyChar();
+                if(Character.isLetter(c))
+                {
+                    ContactTextField.setEditable(false);
+                    JOptionPane.showMessageDialog(null,"Please enter Number only");
+                }
+                else
+                {
+                    ContactTextField.setEditable(true);
+                }
+
+            }
+        });
 
         //Action Listener RegisterJButton
         RegisterJButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                //To save info into text file
                 String name = NameTextField.getText();
                 String email = emailTextField.getText();
                 String contact = ContactTextField.getText();
@@ -45,11 +67,11 @@ public class Register extends JFrame {
                     exception.printStackTrace();
                 }
 
-                // Display message (not sure to use && / ||)
+                // To display message
                 if(NameTextField.getText().isEmpty() || emailTextField.getText().isEmpty() ||
                         ContactTextField.getText().isEmpty() || AddressTextField.getText().isEmpty())
                 {
-                    JOptionPane.showMessageDialog(null, "Register Not Successful");
+                    JOptionPane.showMessageDialog(null, "Please Fill in the empty Space");
                 }
                 else
                 {
@@ -63,9 +85,10 @@ public class Register extends JFrame {
                     dispose();
                 }
 
-
             }
         });
+
+
     }
 
 
