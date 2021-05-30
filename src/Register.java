@@ -83,6 +83,7 @@ public class Register extends JFrame {
             public void actionPerformed(ActionEvent e) {
 
                 //To save info into text file
+                //Info is retrieved from the user input
                 String name = NameTextField.getText();
                 String email = emailTextField.getText();
                 String contact = ContactTextField.getText();
@@ -132,16 +133,6 @@ public class Register extends JFrame {
 
     }
 }
-
-
-//Code to pass the value of the name, address, contact
-
-    /* new displayPayment(name, address, contact number);
-    * will need to create a new constructor to pass the details to payment
-    * hence, declaration of
-    * String name = NameLabel.getText()
-    * String address = AddressLabel.getText()
-    * String contact = ContactNumberLabel.getText()*/
 
 
 
