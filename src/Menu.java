@@ -3,6 +3,7 @@ import com.sun.tools.javac.Main;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -399,7 +400,7 @@ public class Menu extends JFrame {
         dtm = new DefaultTableModel(0, 0);
         final String header[] = new String[] { "Item", "Qty", "Price", "Spinner" };
         dtm.setColumnIdentifiers(header);
-        dtm.addRow(header);
+        //dtm.addRow(header);
         tableOrder = new JTable();
         tableOrder.setModel(dtm);
         tableOrder.getColumnModel().getColumn(0).setPreferredWidth(80);
@@ -408,6 +409,13 @@ public class Menu extends JFrame {
         tableOrder.getColumnModel().getColumn(3).setMinWidth(0);
         tableOrder.getColumnModel().getColumn(3).setMaxWidth(0);
         tableOrder.setShowGrid(false);
+         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+         centerRenderer.setHorizontalAlignment( JLabel.CENTER );
+         tableOrder.getColumnModel().getColumn(0).setCellRenderer( centerRenderer );
+         tableOrder.getColumnModel().getColumn(1).setCellRenderer( centerRenderer );
+         tableOrder.getColumnModel().getColumn(2).setCellRenderer( centerRenderer );
+
+
 
         //initialize spinner model
         spinnerChickenBurger = new JSpinner(new SpinnerNumberModel(0,0,10,1));
