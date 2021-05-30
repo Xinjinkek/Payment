@@ -60,5 +60,7 @@ public class PaymentMethod extends JFrame {
         cardChoice = new JComboBox(card);
         cardChoice.setSelectedIndex(0);
 
+        cardNumber = new JTextField(16);
+
     }
 }
