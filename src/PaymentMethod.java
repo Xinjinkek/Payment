@@ -82,6 +82,12 @@ public class PaymentMethod extends JFrame {
 
             }
         });
+        textFieldCardNumber.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                super.keyPressed(e);
+            }
+        });
     }
 
 
