@@ -86,6 +86,39 @@ public class PaymentMethod extends JFrame {
             @Override
             public void keyPressed(KeyEvent e) {
                 super.keyPressed(e);
+                if(e.getKeyCode()== KeyEvent.VK_ENTER){
+                    String number = textFieldCardNumber.getText();
+                    String name = (String) comboBoxCardChoice.getSelectedItem();
+                    String cardNumber = textFieldCardNumber.getText();
+                    int length = cardNumber.length();
+
+                    cardValidate card = new cardValidate(name);
+                    if (card.validateNumber(number))
+                    {
+                        if(length != 16)
+                        {
+                            JOptionPane.showMessageDialog(null, "Card Invalid, Please Retype!");
+                        }
+                        else
+                        {
+                            //Display validation correct for card input
+                            JOptionPane.showMessageDialog(null, "You may Proceed to Order Summary");
+
+                            //Visible the frame in Order Summary
+                            new DisplayPayment("Order Summary", number).setVisible(true);
+
+                            //To dispose the previous JFrame
+                            dispose();
+                        }
+
+                    }
+                    else
+                    {
+                        //Display Error message and request user to re-input
+                        JOptionPane.showMessageDialog(null, "Card Invalid, Please Retype!");
+                    }
+
+                }
             }
         });
     }
