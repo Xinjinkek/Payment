@@ -7,6 +7,9 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 
 public class Menu extends JFrame {
     private JPanel mainPanel;
@@ -93,8 +96,19 @@ public class Menu extends JFrame {
        orderButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-            new PaymentMethod("Pay with MasterCard or Visa");
-            dispose();
+                //go to payment
+                new PaymentMethod("Pay with MasterCard or Visa");
+                dispose();
+
+                //save Order detail into a file
+                try {
+                    FileWriter writer = new FileWriter("Order.txt");
+                    BufferedWriter bw = new BufferedWriter(writer);
+                }
+                catch (Exception ex){
+                    ex.printStackTrace();
+                }
+
             }
         });
 
