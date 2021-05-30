@@ -48,6 +48,17 @@ public class DisplayPayment extends JFrame {
             }
         });
 
+        confirmOrderButton.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                super.keyPressed(e);
+                if (e.getKeyCode()== KeyEvent.VK_ENTER){
+                    dispose();
+                    JOptionPane.showMessageDialog(null,"Thank you! Please wait while we are " +
+                            "preparing your order !");
+                }
+            }
+        });
     }
 
     public void readCustDetails() {
