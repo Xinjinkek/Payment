@@ -45,7 +45,7 @@
           </grid>
         </constraints>
         <properties>
-          <font name="Arial Black" size="28"/>
+          <font size="28" style="1"/>
           <text value="Registration Form"/>
         </properties>
       </component>

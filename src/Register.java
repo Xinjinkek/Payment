@@ -24,7 +24,7 @@ public class Register extends JFrame {
         this.pack();
         this.setVisible(true);
 
-        //Name input validation
+        //Key Listener for the Name input validation
         //Only allow alphabet to be entered
         NameTextField.addKeyListener(new KeyAdapter() {
             @Override
@@ -43,7 +43,7 @@ public class Register extends JFrame {
             }
         });
 
-        //Contact number input validation
+        //Key Listener for the Contact number input validation
         //Only allow numbers to be entered
         ContactTextField.addKeyListener(new KeyAdapter() {
             @Override
@@ -75,7 +75,7 @@ public class Register extends JFrame {
             }
         });
 
-        //Action Listener RegisterJButton
+        //Action Listener Register JButton
         //To display message of successful or failure of registration
         //To save information of registration into text file
         RegisterJButton.addActionListener(new ActionListener() {
@@ -83,6 +83,7 @@ public class Register extends JFrame {
             public void actionPerformed(ActionEvent e) {
 
                 //To save info into text file
+                //Info is retrieved from the user input
                 String name = NameTextField.getText();
                 String email = emailTextField.getText();
                 String contact = ContactTextField.getText();
@@ -132,16 +133,6 @@ public class Register extends JFrame {
 
     }
 }
-
-
-//Code to pass the value of the name, address, contact
-
-    /* new displayPayment(name, address, contact number);
-    * will need to create a new constructor to pass the details to payment
-    * hence, declaration of
-    * String name = NameLabel.getText()
-    * String address = AddressLabel.getText()
-    * String contact = ContactNumberLabel.getText()*/
 
 
 
