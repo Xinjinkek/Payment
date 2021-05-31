@@ -37,14 +37,11 @@ public class PaymentMethod extends JFrame {
                 int length = cardNumber.length();
 
                 cardValidate card = new cardValidate(name);
-                if (card.validateNumber(number))
-                {
-                    if(length != 16)
-                    {
+                if (card.validateNumber(number)) {
+                    if(length != 16) {
                         JOptionPane.showMessageDialog(null, "Card Invalid, Please Retype!");
                     }
-                    else
-                    {
+                    else {
                         //Display validation correct for card input
                         JOptionPane.showMessageDialog(null, "You may Proceed to Order Summary");
 
@@ -56,8 +53,7 @@ public class PaymentMethod extends JFrame {
                     }
 
                 }
-                else
-                {
+                else {
                     //Display Error message and request user to re-input
                     JOptionPane.showMessageDialog(null, "Card Invalid, Please Retype!");
                 }
@@ -72,13 +68,11 @@ public class PaymentMethod extends JFrame {
                 super.keyTyped(e);
                 char c = e.getKeyChar();
 
-                if(Character.isLetter(c))
-                {
+                if(Character.isLetter(c)) {
                     textFieldCardNumber.setEditable(false);
                     JOptionPane.showMessageDialog(null,"Only Numeric are applicable");
                 }
-                else
-                {
+                else {
                     textFieldCardNumber.setEditable(true);
                 }
 
@@ -98,14 +92,11 @@ public class PaymentMethod extends JFrame {
                     int length = cardNumber.length();
 
                     cardValidate card = new cardValidate(name);
-                    if (card.validateNumber(number))
-                    {
-                        if(length != 16)
-                        {
+                    if (card.validateNumber(number)) {
+                        if(length != 16) {
                             JOptionPane.showMessageDialog(null, "Card Invalid, Please Retype!");
                         }
-                        else
-                        {
+                        else {
                             //Display validation correct for card input
                             JOptionPane.showMessageDialog(null, "You may Proceed to Order Summary");
 
@@ -117,8 +108,7 @@ public class PaymentMethod extends JFrame {
                         }
 
                     }
-                    else
-                    {
+                    else {
                         //Display Error message and request user to re-input
                         JOptionPane.showMessageDialog(null, "Card Invalid, Please Retype!");
                     }

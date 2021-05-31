@@ -6,6 +6,7 @@ import java.awt.event.KeyEvent;
 import java.io.FileWriter;
 
 public class Register extends JFrame {
+
     //Declaration of variables
     private JPanel Panel;
     private JLabel Title;
@@ -90,23 +91,19 @@ public class Register extends JFrame {
                     Writer.close();
 
                 }
-                catch (Exception exception)
-                {
+                catch (Exception exception) {
                     exception.printStackTrace();
                 }
 
                 // To display message
                 if(NameTextField.getText().isEmpty() || emailTextField.getText().isEmpty() ||
-                        ContactTextField.getText().isEmpty() || AddressTextField.getText().isEmpty())
-                {
+                        ContactTextField.getText().isEmpty() || AddressTextField.getText().isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Please Fill in the Empty Space");
                 }
-                else if(length != 10 && length!= 11 )
-                {
+                else if(length != 10 && length!= 11 ) {
                     JOptionPane.showMessageDialog(null, "Contact number invalid");
                 }
-                else
-                {
+                else {
                     //Display Register Successful Message
                     JOptionPane.showMessageDialog(null, "Register Successful!");
 
@@ -127,7 +124,7 @@ public class Register extends JFrame {
             @Override
             public void keyPressed(KeyEvent e) {
                 super.keyPressed(e);
-                if(e.getKeyCode()== KeyEvent.VK_ENTER){
+                if(e.getKeyCode()== KeyEvent.VK_ENTER) {
                     //To save info into text file
                     //Info is retrieved from the user input
                     String name = NameTextField.getText();
@@ -144,23 +141,19 @@ public class Register extends JFrame {
                         Writer.close();
 
                     }
-                    catch (Exception exception)
-                    {
+                    catch (Exception exception) {
                         exception.printStackTrace();
                     }
 
                     // To display message
                     if(NameTextField.getText().isEmpty() || emailTextField.getText().isEmpty() ||
-                            ContactTextField.getText().isEmpty() || AddressTextField.getText().isEmpty())
-                    {
+                            ContactTextField.getText().isEmpty() || AddressTextField.getText().isEmpty()) {
                         JOptionPane.showMessageDialog(null, "Please Fill in the Empty Space");
                     }
-                    else if(length != 10 && length!= 11 )
-                    {
+                    else if(length != 10 && length!= 11 ) {
                         JOptionPane.showMessageDialog(null, "Contact number invalid");
                     }
-                    else
-                    {
+                    else {
                         //Display Register Successful Message
                         JOptionPane.showMessageDialog(null, "Register Successful!");
 

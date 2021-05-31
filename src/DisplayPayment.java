@@ -12,7 +12,8 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class DisplayPayment extends JFrame {
-    //Declaration of variable
+
+    //Declaration of variables
     private JPanel panel1;
     private JPanel detailsPanel;
     private JPanel menuPanel;
@@ -34,8 +35,8 @@ public class DisplayPayment extends JFrame {
     private DefaultTableModel model;
 
     //Constructor
-    public DisplayPayment(String name, String cardN)
-    {
+    public DisplayPayment(String name, String cardN) {
+
         super(name);
         labelDisplayCard.setText(cardN);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -116,7 +117,7 @@ public class DisplayPayment extends JFrame {
     }
 
     //To retrieve registration data from Order.txt file
-    public void readOrderDetails(){
+    public void readOrderDetails() {
         try {
             FileReader reader = new FileReader("Order.txt");
             BufferedReader br = new BufferedReader(reader);

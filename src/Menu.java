@@ -10,6 +10,7 @@ import java.io.FileWriter;
 import java.text.DecimalFormat;
 
 public class Menu extends JFrame {
+
     //Declaration of variable
     private JPanel mainPanel;
     private JPanel panelShopInfo;
@@ -105,7 +106,7 @@ public class Menu extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //Validation of order
-                if (textFieldTotal.getText().isEmpty()){
+                if (textFieldTotal.getText().isEmpty()) {
                     JOptionPane.showMessageDialog(null, "No order received!");
                 }
                 else {
@@ -118,7 +119,7 @@ public class Menu extends JFrame {
                         FileWriter writer = new FileWriter("Order.txt");
                         BufferedWriter bw = new BufferedWriter(writer);
 
-                        for (int i = 0; i < model.getRowCount(); i++){
+                        for (int i = 0; i < model.getRowCount(); i++) {
                             for (int j = 0; j < model.getColumnCount() - 1; j++){
                                 bw.write(tableOrder.getValueAt(i,j).toString() + "\t");
                             }

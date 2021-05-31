@@ -8,6 +8,7 @@ import java.awt.event.KeyEvent;
 import java.io.IOException;
 
 public class MainMenu extends JFrame {
+
     //Declaration of variable
     JPanel mainPanel;
 

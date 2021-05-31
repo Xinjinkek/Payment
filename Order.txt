@@ -1,2 +1,7 @@
 Chicken Burger	5	RM 50.00	
-Total: RM 50.00
+Fries	4	RM 20.00	
+Squid Rings	2	RM 14.00	
+Curly Fries	2	RM 14.00	
+Nuggets	2	RM 16.00	
+Wedges	2	RM 14.00	
+Total: RM 128.00

@@ -5,6 +5,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 public class UserRating extends JFrame{
+
     //Declaration of variables
     private JPanel mainPanel;
     private JPanel titlePanel;
@@ -40,7 +41,7 @@ public class UserRating extends JFrame{
             @Override
             public void keyPressed(KeyEvent e) {
                 super.keyPressed(e);
-                if (e.getKeyCode()== KeyEvent.VK_ENTER){
+                if (e.getKeyCode()== KeyEvent.VK_ENTER) {
                     dispose();
                     JOptionPane.showMessageDialog(null, "Thank you for rating us! " +
                             "\n Please come again!");
