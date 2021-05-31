@@ -31,7 +31,8 @@ public class UserRating extends JFrame{
             }
         });
 
-        rateButton.addKeyListener(new KeyAdapter() {
+
+        rateSlider.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
                 super.keyPressed(e);
@@ -39,6 +40,7 @@ public class UserRating extends JFrame{
                     dispose();
                     JOptionPane.showMessageDialog(null, "Thank you for rating us " +
                             rateSlider.getValue() + "/10!");
+
                 }
             }
         });
