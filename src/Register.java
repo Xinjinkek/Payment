@@ -64,16 +64,6 @@ public class Register extends JFrame {
                     ContactTextField.setEditable(true);
 
                 }
-                /*if(length < 11)
-                {
-                    ContactTextField.setEditable(true);
-                }
-                else
-                {
-                    ContactTextField.setEditable(false);
-                    JOptionPane.showMessageDialog(null, "You've already exceed the number");
-                }*/
-
             }
         });
 

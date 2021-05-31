@@ -6,6 +6,9 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class DisplayPayment extends JFrame {
@@ -26,6 +29,7 @@ public class DisplayPayment extends JFrame {
     private JLabel labelDisplayAddress;
     private JLabel labelCard;
     private JLabel labelDisplayCard;
+    private JButton cancelButton;
     private DefaultTableModel model;
 
     public DisplayPayment(String name, String cardN)
@@ -60,6 +64,25 @@ public class DisplayPayment extends JFrame {
                             "preparing your order !");
                     new UserRating("User Experience");
                 }
+            }
+        });
+        cancelButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                String fileName = "customer.txt";
+
+                try {
+
+                    Files.delete(Paths.get(fileName));
+                }
+                catch (IOException exception)
+                {
+                    exception.printStackTrace();
+                }
+
+                dispose();
+                new Register("Welcome to Ramly. Jr House");
             }
         });
     }
