@@ -122,10 +122,6 @@ public class PaymentMethod extends JFrame {
                 }
             }
         });
-        confirmButton.addKeyListener(new KeyAdapter() {
-        });
-        confirmButton.addKeyListener(new KeyAdapter() {
-        });
     }
 
 
