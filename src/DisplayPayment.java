@@ -32,6 +32,7 @@ public class DisplayPayment extends JFrame {
     private JButton cancelButton;
     private DefaultTableModel model;
 
+    //Constructor
     public DisplayPayment(String name, String cardN)
     {
         super(name);
@@ -66,6 +67,7 @@ public class DisplayPayment extends JFrame {
                 }
             }
         });
+
         cancelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
