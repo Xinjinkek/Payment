@@ -75,6 +75,8 @@ public class DisplayPayment extends JFrame {
                 try {
 
                     Files.delete(Paths.get(fileName));
+                    Files.delete(Paths.get("Order.txt"));
+
                 }
                 catch (IOException exception)
                 {
@@ -119,6 +121,7 @@ public class DisplayPayment extends JFrame {
                 String[] row = lines[i].toString().split("\t");
                 tableModel.addRow(row);
             }
+            br.close();
         }
         catch (Exception exception){
             exception.printStackTrace();
