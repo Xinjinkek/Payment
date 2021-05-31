@@ -46,6 +46,7 @@ public class DisplayPayment extends JFrame {
                 dispose();
                 JOptionPane.showMessageDialog(null,"Thank you! Please wait while we are " +
                         "preparing your order !");
+                new UserRating("User Experience");
             }
         });
 
@@ -57,6 +58,7 @@ public class DisplayPayment extends JFrame {
                     dispose();
                     JOptionPane.showMessageDialog(null,"Thank you! Please wait while we are " +
                             "preparing your order !");
+                    new UserRating("User Experience");
                 }
             }
         });
