@@ -81,8 +81,7 @@ public class DisplayPayment extends JFrame {
                     exception.printStackTrace();
                 }
 
-                dispose();
-                new Register("Welcome to Ramly. Jr House");
+                System.exit(0);
             }
         });
     }
