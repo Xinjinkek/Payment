@@ -43,7 +43,7 @@ public class UserRating extends JFrame{
                 if (e.getKeyCode()== KeyEvent.VK_ENTER){
                     dispose();
                     JOptionPane.showMessageDialog(null, "Thank you for rating us " +
-                            rateSlider.getValue() + "/10!");
+                            "\n Please come again !");
 
                 }
             }
