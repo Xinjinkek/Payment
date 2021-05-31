@@ -18,7 +18,7 @@ public class UserRating extends JFrame{
         super(title);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(mainPanel);
-        this.setSize(350,500);
+        this.setSize(350,400);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
 
