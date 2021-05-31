@@ -449,8 +449,6 @@ public class Menu extends JFrame {
          tableOrder.getColumnModel().getColumn(1).setCellRenderer( centerRenderer );
          tableOrder.getColumnModel().getColumn(2).setCellRenderer( centerRenderer );
 
-
-
         //initialize spinner model
         spinnerChickenBurger = new JSpinner(new SpinnerNumberModel(0,0,10,1));
         spinnerBeefBurger = new JSpinner(new SpinnerNumberModel(0,0,10,1));
@@ -467,6 +465,21 @@ public class Menu extends JFrame {
         spinnerNuggets = new JSpinner(new SpinnerNumberModel(0,0,10,1));
         spinnerWedges = new JSpinner(new SpinnerNumberModel(0,0,10,1));
 
+         //disable user to edit textfield in JSpinner
+         ((JSpinner.DefaultEditor) spinnerChickenBurger.getEditor()).getTextField().setEditable(false);
+         ((JSpinner.DefaultEditor) spinnerBeefBurger.getEditor()).getTextField().setEditable(false);
+         ((JSpinner.DefaultEditor) spinnerBenjo.getEditor()).getTextField().setEditable(false);
+         ((JSpinner.DefaultEditor) spinnerHotdog.getEditor()).getTextField().setEditable(false);
+         ((JSpinner.DefaultEditor) spinnerCoke.getEditor()).getTextField().setEditable(false);
+         ((JSpinner.DefaultEditor) spinner100Plus.getEditor()).getTextField().setEditable(false);
+         ((JSpinner.DefaultEditor) spinnerSprite.getEditor()).getTextField().setEditable(false);
+         ((JSpinner.DefaultEditor) spinnerFanta.getEditor()).getTextField().setEditable(false);
+         ((JSpinner.DefaultEditor) spinnerFries.getEditor()).getTextField().setEditable(false);
+         ((JSpinner.DefaultEditor) spinnerOnionRings.getEditor()).getTextField().setEditable(false);
+         ((JSpinner.DefaultEditor) spinnerSquidRings.getEditor()).getTextField().setEditable(false);
+         ((JSpinner.DefaultEditor) spinnerCurlyFries.getEditor()).getTextField().setEditable(false);
+         ((JSpinner.DefaultEditor) spinnerNuggets.getEditor()).getTextField().setEditable(false);
+         ((JSpinner.DefaultEditor) spinnerWedges.getEditor()).getTextField().setEditable(false);
 
     }
 }
