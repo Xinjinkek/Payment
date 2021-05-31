@@ -29,8 +29,8 @@ public class UserRating extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                JOptionPane.showMessageDialog(null, "Thank you for rating us ! " +
-                        "\n Please come again !");
+                JOptionPane.showMessageDialog(null, "Thank you for rating us! " +
+                        "\n Please come again!");
             }
         });
 
@@ -42,8 +42,8 @@ public class UserRating extends JFrame{
                 super.keyPressed(e);
                 if (e.getKeyCode()== KeyEvent.VK_ENTER){
                     dispose();
-                    JOptionPane.showMessageDialog(null, "Thank you for rating us " +
-                            "\n Please come again !");
+                    JOptionPane.showMessageDialog(null, "Thank you for rating us! " +
+                            "\n Please come again!");
 
                 }
             }
