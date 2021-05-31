@@ -431,7 +431,11 @@ public class Menu extends JFrame {
          final String header[] = new String[] { "Item", "Qty", "Price", "Spinner" };
          model.setColumnIdentifiers(header);
          //model.addRow(header);
-         tableOrder = new JTable();
+         tableOrder = new JTable(){
+             public boolean isCellEditable(int row, int column){
+                 return false;
+             }
+         };
          tableOrder.setModel(model);
          tableOrder.getColumnModel().getColumn(0).setPreferredWidth(80);
          tableOrder.getColumnModel().getColumn(1).setPreferredWidth(30);
