@@ -3,6 +3,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 
 public class MainMenu extends JFrame {
@@ -48,6 +50,15 @@ public class MainMenu extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 new Register("Register");
                 dispose();
+            }
+        });
+        button.addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent e) {
+                super.keyPressed(e);
+                if(e.getKeyCode()== KeyEvent.VK_ENTER){
+                    new Register("Register");
+                    dispose();
+                }
             }
         });
     }
