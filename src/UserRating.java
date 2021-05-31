@@ -29,8 +29,8 @@ public class UserRating extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                JOptionPane.showMessageDialog(null, "Thank you for rating us " +
-                        rateSlider.getValue() + "/10!");
+                JOptionPane.showMessageDialog(null, "Thank you for rating us ! " +
+                        "\n Please come again !");
             }
         });
 
