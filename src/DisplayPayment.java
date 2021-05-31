@@ -53,7 +53,7 @@ public class DisplayPayment extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 dispose();
                 JOptionPane.showMessageDialog(null,"Thank you! Please wait while we are " +
-                        "preparing your order !");
+                        "preparing your order!");
                 new UserRating("User Experience");
             }
         });
@@ -67,7 +67,7 @@ public class DisplayPayment extends JFrame {
                 if (e.getKeyCode()== KeyEvent.VK_ENTER){
                     dispose();
                     JOptionPane.showMessageDialog(null,"Thank you! Please wait while we are " +
-                            "preparing your order !");
+                            "preparing your order!");
                     new UserRating("User Experience");
                 }
             }
