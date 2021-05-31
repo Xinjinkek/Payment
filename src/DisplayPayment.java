@@ -12,6 +12,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class DisplayPayment extends JFrame {
+    //Declaration of variable
     private JPanel panel1;
     private JPanel detailsPanel;
     private JPanel menuPanel;
@@ -45,6 +46,8 @@ public class DisplayPayment extends JFrame {
         this.setVisible(true);
         readCustDetails();
 
+        //Action Listener "Confirm Order" button to prompt status message dialogue
+        //and enter User Rating window
         confirmOrderButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -55,6 +58,8 @@ public class DisplayPayment extends JFrame {
             }
         });
 
+        //Key Listener where "Enter Key" can be detected
+        //Provide same function as the "Confirm Order" button
         confirmOrderButton.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
@@ -68,15 +73,14 @@ public class DisplayPayment extends JFrame {
             }
         });
 
+        //Delete the user information data when "Cancel Order" button is pressed
+        //The program will be terminated
         cancelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-                String fileName = "customer.txt";
-
                 try {
 
-                    Files.delete(Paths.get(fileName));
+                    Files.delete(Paths.get("Customer.txt"));
                     Files.delete(Paths.get("Order.txt"));
 
                 }
@@ -90,9 +94,10 @@ public class DisplayPayment extends JFrame {
         });
     }
 
+    //To retrieve registration data from customer.txt file
     public void readCustDetails() {
         try {
-            FileReader reader = new FileReader("customer.txt");
+            FileReader reader = new FileReader("Customer.txt");
             BufferedReader br = new BufferedReader(reader);
             ArrayList<String> s = new ArrayList<String>();
             String line;
@@ -110,7 +115,7 @@ public class DisplayPayment extends JFrame {
         }
     }
 
-
+    //To retrieve registration data from Order.txt file
     public void readOrderDetails(){
         try {
             FileReader reader = new FileReader("Order.txt");

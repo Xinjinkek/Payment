@@ -10,6 +10,7 @@ import java.io.FileWriter;
 import java.text.DecimalFormat;
 
 public class Menu extends JFrame {
+    //Declaration of variable
     private JPanel mainPanel;
     private JPanel panelShopInfo;
     private JLabel labelShopName;
@@ -79,6 +80,7 @@ public class Menu extends JFrame {
 
     DecimalFormat df = new DecimalFormat("0.00");
 
+    //Constructor
     public Menu(String title) {
         super(title);
         this.setSize(800,600);
@@ -87,6 +89,8 @@ public class Menu extends JFrame {
         this.setLocationRelativeTo(null);
         this.setVisible(true);
 
+        //Return to registration window
+        //To edit the customer registration data
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -95,9 +99,12 @@ public class Menu extends JFrame {
             }
         });
 
-       orderButton.addActionListener(new ActionListener() {
+        //To enter payment window
+        //Save order details into Order.txt file
+        orderButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                //Validation of order
                 if (textFieldTotal.getText().isEmpty()){
                     JOptionPane.showMessageDialog(null, "No order received!");
                 }
@@ -129,6 +136,7 @@ public class Menu extends JFrame {
             }
         });
 
+        //Reset
         buttonReset.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -137,16 +145,19 @@ public class Menu extends JFrame {
             }
         });
 
+        //Initialize foodListener to all food Spinner
         spinnerChickenBurger.addChangeListener(foodListener);
         spinnerBeefBurger.addChangeListener(foodListener);
         spinnerBenjo.addChangeListener(foodListener);
         spinnerHotdog.addChangeListener(foodListener);
 
+        //Initialize drinksListener to all drinks Spinner
         spinnerCoke.addChangeListener(drinksListener);
         spinner100Plus.addChangeListener(drinksListener);
         spinnerSprite.addChangeListener(drinksListener);
         spinnerFanta.addChangeListener(drinksListener);
 
+        //Initialize sidesListener to all sides Spinner
         spinnerFries.addChangeListener(sidesListener);
         spinnerOnionRings.addChangeListener(sidesListener);
         spinnerSquidRings.addChangeListener(sidesListener);
@@ -156,10 +167,10 @@ public class Menu extends JFrame {
 
     }
 
+    //Event handling when food spinner is used
     ChangeListener foodListener = new ChangeListener() {
         @Override
         public void stateChanged(ChangeEvent e) {
-
             final int quantity = (int) ((JSpinner) e.getSource()).getValue();
             final int rows = tableOrder.getRowCount();
             for (int row = 0; row < rows; row++) {
@@ -237,6 +248,8 @@ public class Menu extends JFrame {
             }
         }
     };
+
+    //Event handling when drinks spinner is used
     ChangeListener drinksListener = new ChangeListener() {
         @Override
         public void stateChanged(ChangeEvent e) {
@@ -319,6 +332,7 @@ public class Menu extends JFrame {
         }
     };
 
+    //Event handling when sides spinner is used
     ChangeListener sidesListener = new ChangeListener() {
         @Override
         public void stateChanged(ChangeEvent e) {
@@ -429,7 +443,7 @@ public class Menu extends JFrame {
     };
 
      void createUIComponents() {
-        // TODO: place custom component creation code here
+         // TODO: place custom component creation code here
          model = new DefaultTableModel(0, 0);
          final String header[] = new String[] { "Item", "Qty", "Price", "Spinner" };
          model.setColumnIdentifiers(header);
@@ -452,23 +466,23 @@ public class Menu extends JFrame {
          tableOrder.getColumnModel().getColumn(1).setCellRenderer( centerRenderer );
          tableOrder.getColumnModel().getColumn(2).setCellRenderer( centerRenderer );
 
-        //initialize spinner model
-        spinnerChickenBurger = new JSpinner(new SpinnerNumberModel(0,0,10,1));
-        spinnerBeefBurger = new JSpinner(new SpinnerNumberModel(0,0,10,1));
-        spinnerBenjo = new JSpinner(new SpinnerNumberModel(0,0,10,1));
-        spinnerHotdog = new JSpinner(new SpinnerNumberModel(0,0,10,1));
-        spinnerCoke = new JSpinner(new SpinnerNumberModel(0,0,10,1));
-        spinner100Plus = new JSpinner(new SpinnerNumberModel(0,0,10,1));
-        spinnerSprite = new JSpinner(new SpinnerNumberModel(0,0,10,1));
-        spinnerFanta = new JSpinner(new SpinnerNumberModel(0,0,10,1));
-        spinnerFries = new JSpinner(new SpinnerNumberModel(0,0,10,1));;
-        spinnerOnionRings = new JSpinner(new SpinnerNumberModel(0,0,10,1));
-        spinnerSquidRings = new JSpinner(new SpinnerNumberModel(0,0,10,1));
-        spinnerCurlyFries = new JSpinner(new SpinnerNumberModel(0,0,10,1));
-        spinnerNuggets = new JSpinner(new SpinnerNumberModel(0,0,10,1));
-        spinnerWedges = new JSpinner(new SpinnerNumberModel(0,0,10,1));
+         //initialize spinner model
+         spinnerChickenBurger = new JSpinner(new SpinnerNumberModel(0,0,10,1));
+         spinnerBeefBurger = new JSpinner(new SpinnerNumberModel(0,0,10,1));
+         spinnerBenjo = new JSpinner(new SpinnerNumberModel(0,0,10,1));
+         spinnerHotdog = new JSpinner(new SpinnerNumberModel(0,0,10,1));
+         spinnerCoke = new JSpinner(new SpinnerNumberModel(0,0,10,1));
+         spinner100Plus = new JSpinner(new SpinnerNumberModel(0,0,10,1));
+         spinnerSprite = new JSpinner(new SpinnerNumberModel(0,0,10,1));
+         spinnerFanta = new JSpinner(new SpinnerNumberModel(0,0,10,1));
+         spinnerFries = new JSpinner(new SpinnerNumberModel(0,0,10,1));;
+         spinnerOnionRings = new JSpinner(new SpinnerNumberModel(0,0,10,1));
+         spinnerSquidRings = new JSpinner(new SpinnerNumberModel(0,0,10,1));
+         spinnerCurlyFries = new JSpinner(new SpinnerNumberModel(0,0,10,1));
+         spinnerNuggets = new JSpinner(new SpinnerNumberModel(0,0,10,1));
+         spinnerWedges = new JSpinner(new SpinnerNumberModel(0,0,10,1));
 
-         //disable user to edit textfield in JSpinner
+          //disable user to edit textfield in JSpinner
          ((JSpinner.DefaultEditor) spinnerChickenBurger.getEditor()).getTextField().setEditable(false);
          ((JSpinner.DefaultEditor) spinnerBeefBurger.getEditor()).getTextField().setEditable(false);
          ((JSpinner.DefaultEditor) spinnerBenjo.getEditor()).getTextField().setEditable(false);
@@ -483,7 +497,7 @@ public class Menu extends JFrame {
          ((JSpinner.DefaultEditor) spinnerCurlyFries.getEditor()).getTextField().setEditable(false);
          ((JSpinner.DefaultEditor) spinnerNuggets.getEditor()).getTextField().setEditable(false);
          ((JSpinner.DefaultEditor) spinnerWedges.getEditor()).getTextField().setEditable(false);
+     }
 
-    }
 }
 

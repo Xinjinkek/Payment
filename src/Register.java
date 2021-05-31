@@ -6,7 +6,7 @@ import java.awt.event.KeyEvent;
 import java.io.FileWriter;
 
 public class Register extends JFrame {
-    //Declare variable
+    //Declaration of variables
     private JPanel Panel;
     private JLabel Title;
     private JLabel NameLabel, EmailLabel, ContactNumberLabel, AddressLabel;
@@ -16,8 +16,8 @@ public class Register extends JFrame {
     private JTextField ContactTextField;
     private JTextField AddressTextField;
 
+    //Constructor
     public Register(String title) {
-
         super(title);
         this.setContentPane(Panel);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -67,7 +67,7 @@ public class Register extends JFrame {
             }
         });
 
-        //Action Listener Register JButton
+        //Action Listener Register button
         //To display message of successful or failure of registration
         //To save information of registration into text file
         RegisterJButton.addActionListener(new ActionListener() {
@@ -85,7 +85,7 @@ public class Register extends JFrame {
 
                 try {
 
-                    FileWriter Writer = new FileWriter("customer.txt");
+                    FileWriter Writer = new FileWriter("Customer.txt");
                     Writer.write(name + "\n" + email + "\n" + contact + "\n" + address);
                     Writer.close();
 
@@ -121,6 +121,8 @@ public class Register extends JFrame {
         });
 
 
+        //Key Listener where "Enter Key" can be detected
+        //Provide same function as the "Register" button
         AddressTextField.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
@@ -137,7 +139,7 @@ public class Register extends JFrame {
 
                     try {
 
-                        FileWriter Writer = new FileWriter("customer.txt");
+                        FileWriter Writer = new FileWriter("Customer.txt");
                         Writer.write(name + "\n" + email + "\n" + contact + "\n" + address);
                         Writer.close();
 
@@ -176,12 +178,6 @@ public class Register extends JFrame {
         });
     }
 
-
-    //Custom Create Component from .form
-    private void createUIComponents() {
-        // TODO: place custom component creation code here
-
-    }
 }
 
 

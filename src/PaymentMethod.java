@@ -6,7 +6,7 @@ import java.awt.event.KeyEvent;
 
 public class PaymentMethod extends JFrame {
 
-    //Declaration
+    //Declaration of variables
     private JPanel main;
     private JTextField textFieldCardNumber;
     private JComboBox comboBoxCardChoice;
@@ -15,6 +15,7 @@ public class PaymentMethod extends JFrame {
     private JButton confirmButton;
     private JLabel titleLabel;
 
+    //Constructor
     public PaymentMethod(String title) {
 
         super(title);
@@ -128,10 +129,8 @@ public class PaymentMethod extends JFrame {
     }
 
 
-    //Custom Create Component from .form
     private void createUIComponents() {
         // TODO: place custom component creation code here
-
         //Credit Card ComboBox declaration
         String[] card = {"MasterCard", "Visa"};
         comboBoxCardChoice = new JComboBox(card);

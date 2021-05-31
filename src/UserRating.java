@@ -5,6 +5,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 public class UserRating extends JFrame{
+    //Declaration of variables
     private JPanel mainPanel;
     private JPanel titlePanel;
     private JPanel sliderPanel;
@@ -13,8 +14,8 @@ public class UserRating extends JFrame{
     private JLabel instructionLabel;
     private JButton rateButton;
 
-    public UserRating(String title)
-    {
+    //Constructor
+    public UserRating(String title) {
         super(title);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(mainPanel);
@@ -22,6 +23,8 @@ public class UserRating extends JFrame{
         this.setLocationRelativeTo(null);
         this.setVisible(true);
 
+        //Action Listener Rate button
+        //To display user feedback
         rateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -31,7 +34,8 @@ public class UserRating extends JFrame{
             }
         });
 
-
+        //Key Listener where "Enter Key" can be detected
+        //Provide same function as the "Rate" button
         rateSlider.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
