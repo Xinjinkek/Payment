@@ -34,7 +34,7 @@ public class MainMenu extends JFrame {
         title.setFont(new Font("INK FREE", Font.BOLD, 18));
         title.setForeground(Color.BLACK);
 
-        JButton button = new JButton("Order Food Now >>");
+        JButton button = new JButton("Order Now");
         panel1.add(button);
         button.setAlignmentX(Component.LEFT_ALIGNMENT);
 
