@@ -9,23 +9,23 @@ import java.io.FileReader;
 import java.util.ArrayList;
 
 public class DisplayPayment extends JFrame {
-
-    private JPanel mainPanel;
+    private JPanel panel1;
     private JPanel detailsPanel;
     private JPanel menuPanel;
-    private JLabel titleLabel;
-    private JLabel labelNameTitle;
-    private JLabel labelContact;
-    private JLabel labelEmailAddress;
-    private JLabel labelCard;
-    private JLabel labelDisplayName;
-    private JLabel labelDisplayEmail;
-    private JLabel labelDisplayContact;
-    private JLabel labelDisplayCard;
-    private JLabel labelAddress;
-    private JLabel labelDisplayAddress;
+    private JPanel titlePanel;
+    private JLabel labelTitle;
     private JTable menuDisplayTable;
     private JButton confirmOrderButton;
+    private JLabel labelName;
+    private JLabel labelDisplayName;
+    private JLabel labelEmail;
+    private JLabel labelDisplayEmail;
+    private JLabel labelContact;
+    private JLabel labelDisplayContact;
+    private JLabel labelAddress;
+    private JLabel labelDisplayAddress;
+    private JLabel labelCard;
+    private JLabel labelDisplayCard;
     private DefaultTableModel model;
 
     public DisplayPayment(String name, String cardN)
@@ -33,7 +33,7 @@ public class DisplayPayment extends JFrame {
         super(name);
         labelDisplayCard.setText(cardN);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setContentPane(mainPanel);
+        this.setContentPane(panel1);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setVisible(true);
         this.setLocationRelativeTo(null);
@@ -78,11 +78,12 @@ public class DisplayPayment extends JFrame {
             br.close();
         }
         catch(Exception e){
-                e.printStackTrace();
-            }
+            e.printStackTrace();
         }
+    }
 
-     public void readOrderDetails(){
+
+    public void readOrderDetails(){
         try {
             FileReader reader = new FileReader("Order.txt");
             BufferedReader br = new BufferedReader(reader);
@@ -98,7 +99,8 @@ public class DisplayPayment extends JFrame {
         catch (Exception exception){
             exception.printStackTrace();
         }
-     }
+    }
+
 
     private void createUIComponents() {
         // TODO: place custom component creation code here
