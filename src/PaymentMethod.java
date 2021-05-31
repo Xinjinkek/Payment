@@ -83,6 +83,9 @@ public class PaymentMethod extends JFrame {
 
             }
         });
+
+        //Key Listener where "Enter Key" can be detected
+        //Will able to display error message if the input is wrong after pressing "Enter"
         textFieldCardNumber.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {

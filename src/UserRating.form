@@ -58,7 +58,11 @@
               <maximum value="10"/>
               <paintLabels value="true"/>
               <paintTicks value="true"/>
+              <paintTrack value="true"/>
+              <snapToTicks value="false"/>
               <valueIsAdjusting value="true"/>
+              <verifyInputWhenFocusTarget value="true"/>
+              <visible value="true"/>
             </properties>
           </component>
           <component id="4c4a8" class="javax.swing.JButton" binding="rateButton">

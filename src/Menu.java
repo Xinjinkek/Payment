@@ -86,6 +86,7 @@ public class Menu extends JFrame {
         this.setContentPane(mainPanel);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
+
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -93,6 +94,7 @@ public class Menu extends JFrame {
                 dispose();
             }
         });
+
        orderButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -127,6 +129,14 @@ public class Menu extends JFrame {
             }
         });
 
+        buttonReset.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new Menu("Main Menu");
+                dispose();
+            }
+        });
+
         spinnerChickenBurger.addChangeListener(foodListener);
         spinnerBeefBurger.addChangeListener(foodListener);
         spinnerBenjo.addChangeListener(foodListener);
@@ -144,13 +154,6 @@ public class Menu extends JFrame {
         spinnerNuggets.addChangeListener(sidesListener);
         spinnerWedges.addChangeListener(sidesListener);
 
-        buttonReset.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new Menu("Main Menu");
-                dispose();
-            }
-        });
     }
 
     ChangeListener foodListener = new ChangeListener() {
