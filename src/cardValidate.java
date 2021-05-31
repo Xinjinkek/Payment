@@ -1,8 +1,6 @@
 //Class written to use for Card Validation Purpose
 //To validate if the Credit Card Number input is correct
 
-import java.text.SimpleDateFormat;
-
 public class cardValidate {
 
     //declaration of variable
@@ -40,10 +38,12 @@ public class cardValidate {
 
         if (cardNum.startsWith("4") && cardName == "Visa")
         {
+            //Card Number that starts with 4 is Visa
             conditionB = true;
         }
         else if (cardNum.startsWith("5") && cardName == "MasterCard")
         {
+            //Card Number that starts with 5 is MasterCard
             conditionB = true;
         }
         else
@@ -53,6 +53,8 @@ public class cardValidate {
 
         if (conditionA && conditionB)
         {
+            //When card number and name are correct
+            //then return true
             validation = true;
         }
 
