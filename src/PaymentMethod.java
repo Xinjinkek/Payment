@@ -36,7 +36,7 @@ public class PaymentMethod extends JFrame {
                 String cardNumber = textFieldCardNumber.getText();
                 int length = cardNumber.length();
 
-                cardValidate card = new cardValidate(name);
+                CardValidate card = new CardValidate(name);
                 if (card.validateNumber(number)) {
                     if(length != 16) {
                         JOptionPane.showMessageDialog(null, "Card Invalid, Please Retype!");
@@ -91,7 +91,7 @@ public class PaymentMethod extends JFrame {
                     String cardNumber = textFieldCardNumber.getText();
                     int length = cardNumber.length();
 
-                    cardValidate card = new cardValidate(name);
+                    CardValidate card = new CardValidate(name);
                     if (card.validateNumber(number)) {
                         if(length != 16) {
                             JOptionPane.showMessageDialog(null, "Card Invalid, Please Retype!");

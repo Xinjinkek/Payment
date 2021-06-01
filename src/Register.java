@@ -21,7 +21,7 @@ public class Register extends JFrame {
     //Constructor
     public Register(String title) {
 
-
+        //Declaration of variables
         super(title);
         this.setContentPane(Panel);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -86,13 +86,10 @@ public class Register extends JFrame {
                 int length = phoneNumber.length();
                 EmailValidate status = new EmailValidate();
 
-
                 try {
-
                     FileWriter Writer = new FileWriter("Customer.txt");
                     Writer.write(name + "\n" + email + "\n" + contact + "\n" + address);
                     Writer.close();
-
                 }
                 catch (Exception exception) {
                     exception.printStackTrace();
@@ -140,14 +137,13 @@ public class Register extends JFrame {
                     String contact = ContactTextField.getText();
                     String address = AddressTextField.getText();
                     String phoneNumber = ContactTextField.getText();
+                    EmailValidate status = new EmailValidate();
                     int length = phoneNumber.length();
 
                     try {
-
                         FileWriter Writer = new FileWriter("Customer.txt");
                         Writer.write(name + "\n" + email + "\n" + contact + "\n" + address);
                         Writer.close();
-
                     }
                     catch (Exception exception) {
                         exception.printStackTrace();
@@ -161,6 +157,9 @@ public class Register extends JFrame {
                     else if(length != 10 && length!= 11 ) {
                         JOptionPane.showMessageDialog(null, "Contact number invalid");
                     }
+                    else if(status.eValidate(email) == false) {
+                        JOptionPane.showMessageDialog(null, "Email Error!");
+                    }
                     else {
                         //Display Register Successful Message
                         JOptionPane.showMessageDialog(null, "Register Successful!");
@@ -171,14 +170,9 @@ public class Register extends JFrame {
                         //Dispose old Window
                         dispose();
                     }
-
                 }
-
             }
-
         });
-
-
     }
 
 }

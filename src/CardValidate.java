@@ -1,7 +1,7 @@
 //Class written to use for Card Validation Purpose
 //To validate if the Credit Card Number input is correct
 
-public class cardValidate {
+public class CardValidate {
 
     //Declaration of variables
     private boolean validation = false;
@@ -9,7 +9,7 @@ public class cardValidate {
     private long cardNum;
 
     //Constructor
-    cardValidate(String cn) {
+    CardValidate(String cn) {
         cardName = cn;
     }
 

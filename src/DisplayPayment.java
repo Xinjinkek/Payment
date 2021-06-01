@@ -80,13 +80,10 @@ public class DisplayPayment extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-
                     Files.delete(Paths.get("Customer.txt"));
                     Files.delete(Paths.get("Order.txt"));
-
                 }
-                catch (IOException exception)
-                {
+                catch (IOException exception) {
                     exception.printStackTrace();
                 }
 
