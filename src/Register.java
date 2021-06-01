@@ -17,6 +17,10 @@ public class Register extends JFrame {
     private JTextField emailTextField;
     private JTextField ContactTextField;
     private JTextField AddressTextField;
+    private JLabel AddressIcon;
+    private JLabel ContactIcon;
+    private JLabel EmailIcon;
+    private JLabel NameIcon;
 
     //Constructor
     public Register(String title) {
