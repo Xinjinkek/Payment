@@ -14,6 +14,7 @@ public class UserRating extends JFrame{
     private JSlider rateSlider;
     private JLabel instructionLabel;
     private JButton rateButton;
+    private JLabel smileyIcon;
 
     //Constructor
     public UserRating(String title) {
