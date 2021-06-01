@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -19,6 +20,8 @@ public class Register extends JFrame {
 
     //Constructor
     public Register(String title) {
+
+
         super(title);
         this.setContentPane(Panel);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -33,12 +36,10 @@ public class Register extends JFrame {
             public void keyTyped(KeyEvent e) {
                 super.keyTyped(e);
                 char c = e.getKeyChar();
-                if(Character.isLetter(c) || Character.isWhitespace(c) || Character.isISOControl(c))
-                {
+                if(Character.isLetter(c) || Character.isWhitespace(c) || Character.isISOControl(c)) {
                     NameTextField.setEditable(true);
                 }
-                else
-                {
+                else {
                     NameTextField.setEditable(false);
                     JOptionPane.showMessageDialog(null, "Please Enter Alphabet Only");
                 }
@@ -50,23 +51,23 @@ public class Register extends JFrame {
         ContactTextField.addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
+                super.keyTyped(e);
                 String phoneNumber = ContactTextField.getText();
                 int length = phoneNumber.length();
-                super.keyTyped(e);
                 char c = e.getKeyChar();
 
-                if(Character.isLetter(c))
-                {
+                if(Character.isLetter(c)) {
                     ContactTextField.setEditable(false);
                     JOptionPane.showMessageDialog(null,"Please Enter Number Only");
                 }
-                else
-                {
+                else {
                     ContactTextField.setEditable(true);
 
                 }
             }
         });
+
+
 
         //Action Listener Register button
         //To display message of successful or failure of registration
@@ -83,6 +84,8 @@ public class Register extends JFrame {
                 String address = AddressTextField.getText();
                 String phoneNumber = ContactTextField.getText();
                 int length = phoneNumber.length();
+                EmailValidate status = new EmailValidate();
+
 
                 try {
 
@@ -103,6 +106,10 @@ public class Register extends JFrame {
                 else if(length != 10 && length!= 11 ) {
                     JOptionPane.showMessageDialog(null, "Contact number invalid");
                 }
+                else if(status.eValidate(email) == false)
+                {
+                    JOptionPane.showMessageDialog(null, "Email Error!");
+                }
                 else {
                     //Display Register Successful Message
                     JOptionPane.showMessageDialog(null, "Register Successful!");
@@ -113,6 +120,7 @@ public class Register extends JFrame {
                     //Dispose old Window
                     dispose();
                 }
+
 
             }
         });
@@ -166,9 +174,11 @@ public class Register extends JFrame {
 
                 }
 
-                }
+            }
 
         });
+
+
     }
 
 }
