@@ -30,7 +30,7 @@ public class Register extends JFrame {
         this.setContentPane(Panel);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.pack();
-        this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null); //Set the window to the centre of the screen
         this.setVisible(true);
 
         //Key Listener for the Name input validation
@@ -107,8 +107,8 @@ public class Register extends JFrame {
                 else if(length != 10 && length!= 11 ) {
                     JOptionPane.showMessageDialog(null, "Contact number invalid");
                 }
-                else if(status.eValidate(email) == false)
-                {
+                else if(status.eValidate(email) == false) {
+                    //To validate email address
                     JOptionPane.showMessageDialog(null, "Email Error!");
                 }
                 else {
@@ -162,6 +162,7 @@ public class Register extends JFrame {
                         JOptionPane.showMessageDialog(null, "Contact number invalid");
                     }
                     else if(status.eValidate(email) == false) {
+                        //To validate email address
                         JOptionPane.showMessageDialog(null, "Email Error!");
                     }
                     else {

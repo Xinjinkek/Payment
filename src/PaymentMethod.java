@@ -22,7 +22,7 @@ public class PaymentMethod extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(main);
         this.setSize(350,200);
-        this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null); //Set the window to the centre of the screen
         this.setVisible(true);
 
 

@@ -19,12 +19,21 @@ public class MainMenu extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(mainPanel);
         this.setSize(350,450);
-        this.setLocationRelativeTo(null); //Set the window to the centre of the screen
+        //Set the window to the centre of the screen
+        this.setLocationRelativeTo(null);
         this.setVisible(true);
 
     }
 
     public void createUIComponents() throws IOException {
+
+        //Create a new JPanel
+        //Specify the layout of the JPanel
+        //Create a new icon for the label
+        //Set the size of image
+        //Create label, panel and button
+        //Specify the background colour, title and font
+        //Add the component to the main panel
         mainPanel = new JPanel(new BorderLayout());
         mainPanel.setBackground(Color.decode("#EDBB99"));
         Image image = ImageIO.read(getClass().getResource("mainlogo.png"));
@@ -70,5 +79,8 @@ public class MainMenu extends JFrame {
                 }
             }
         });
+
     }
+
+
 }

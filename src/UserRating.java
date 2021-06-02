@@ -4,7 +4,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-public class UserRating extends JFrame{
+public class UserRating extends JFrame {
 
     //Declaration of variables
     private JPanel mainPanel;
@@ -22,7 +22,7 @@ public class UserRating extends JFrame{
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(mainPanel);
         this.setSize(350,400);
-        this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null); //Set the window to the centre of the screen
         this.setVisible(true);
 
         //Action Listener Rate button
@@ -51,4 +51,6 @@ public class UserRating extends JFrame{
             }
         });
     }
+
+
 }

@@ -43,9 +43,9 @@ public class DisplayPayment extends JFrame {
         this.setContentPane(panel1);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setVisible(true);
-        this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null); //Set the window to the centre of the screen
         this.setVisible(true);
-        readCustDetails();
+        readCustDetails(); //To retrieve customer details from Customer.txt
 
         //Action Listener "Confirm Order" button to prompt status message dialogue
         //and enter User Rating window

@@ -9,7 +9,7 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.text.DecimalFormat;
 
-public class Menu extends JFrame {
+public class Menu extends JFrame  {
 
     //Declaration of variable
     private JPanel mainPanel;
@@ -87,7 +87,7 @@ public class Menu extends JFrame {
         this.setSize(800,600);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(mainPanel);
-        this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null); //Set the window to the centre of the screen
         this.setVisible(true);
 
         //Return to registration window
@@ -114,11 +114,12 @@ public class Menu extends JFrame {
                     new PaymentMethod("Pay with MasterCard or Visa");
                     dispose();
 
-                    //save Order detail into a file
+                    //save Order detail into an Order.txt file
                     try {
                         FileWriter writer = new FileWriter("Order.txt");
                         BufferedWriter bw = new BufferedWriter(writer);
 
+                        //To read the value of table cells
                         for (int i = 0; i < model.getRowCount(); i++) {
                             for (int j = 0; j < model.getColumnCount() - 1; j++){
                                 bw.write(tableOrder.getValueAt(i,j).toString() + "\t");
@@ -137,7 +138,7 @@ public class Menu extends JFrame {
             }
         });
 
-        //Reset
+        //To Reset Order Menu
         buttonReset.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -172,8 +173,12 @@ public class Menu extends JFrame {
     ChangeListener foodListener = new ChangeListener() {
         @Override
         public void stateChanged(ChangeEvent e) {
+
+            //To get the value of JSpinner
             final int quantity = (int) ((JSpinner) e.getSource()).getValue();
             final int rows = tableOrder.getRowCount();
+
+            //To modify the table value when value of Spinner change
             for (int row = 0; row < rows; row++) {
                 if (model.getValueAt(row, 3) == e.getSource()) {
                     if (model.getValueAt(row, 0).equals("Chicken Burger")) {
@@ -198,16 +203,18 @@ public class Menu extends JFrame {
                         totalFood4 = food4 * quantity;
                     }
 
+                    //If the value of JSpinner = 0, hence the row will be remove
                     if (quantity == 0) {
                         model.removeRow(row);
                     }
                     foodTotal = totalFood1 + totalFood2 + totalFood3 + totalFood4;
                     total = foodTotal + drinksTotal + sidesTotal;
-                    textFieldTotal.setText("RM " + df.format(total) + "");
+                    textFieldTotal.setText("RM " + df.format(total) + ""); //To display the total amount in two decimals
                     return;
                 }
            }
 
+            //When JSpinner is pressed once, a row will be added to the JTable
             for (int i = 0; i < numberOfFoods; i++) {
                 if (spinnerChickenBurger == e.getSource()) {
                     food1 = 10.00;
@@ -255,8 +262,11 @@ public class Menu extends JFrame {
         @Override
         public void stateChanged(ChangeEvent e) {
 
+            //To get the value of JSpinner
             final int quantity = (int) ((JSpinner) e.getSource()).getValue();
             final int rows = tableOrder.getRowCount();
+
+            //To modify the table value when value of Spinner change
             for (int row = 0; row < rows; row++) {
                 if (model.getValueAt(row, 3) == e.getSource()) {
                     if (model.getValueAt(row, 0).equals("Coke")) {
@@ -281,16 +291,18 @@ public class Menu extends JFrame {
                         totalDrinks4 = drinks4 * quantity;
                     }
 
+                    //If the value of JSpinner = 0, hence the row will be remove
                     if (quantity == 0) {
                         model.removeRow(row);
                     }
                     drinksTotal = totalDrinks1 + totalDrinks2 + totalDrinks3 + totalDrinks4;
                     total = foodTotal + drinksTotal + sidesTotal;
-                    textFieldTotal.setText("RM " + df.format(total) + "");
+                    textFieldTotal.setText("RM " + df.format(total) + ""); //To display the total amount in two decimals
                     return;
                 }
             }
 
+            //When JSpinner is pressed once, a row will be added to the JTable
             for (int i = 0; i < numberOfSides; i++) {
                 if (spinnerCoke == e.getSource()) {
                     drinks1 = 3.00;
@@ -338,8 +350,11 @@ public class Menu extends JFrame {
         @Override
         public void stateChanged(ChangeEvent e) {
 
+            //To get the value of JSpinner
             final int quantity = (int) ((JSpinner) e.getSource()).getValue();
             final int rows = tableOrder.getRowCount();
+
+            //To modify the table value when value of Spinner change
             for (int row = 0; row < rows; row++) {
                 if (model.getValueAt(row, 3) == e.getSource()) {
                     if (model.getValueAt(row, 0).equals("Fries")) {
@@ -374,16 +389,18 @@ public class Menu extends JFrame {
                         totalSides6 = sides6 * quantity;
                     }
 
+                    //If the value of JSpinner = 0, hence the row will be remove
                     if (quantity == 0) {
                         model.removeRow(row);
                     }
                     sidesTotal = totalSides1 + totalSides2 + totalSides3 + totalSides4 + totalSides5 + totalSides6;
                     total = foodTotal + drinksTotal + sidesTotal;
-                    textFieldTotal.setText("RM " + df.format(total) + "");
+                    textFieldTotal.setText("RM " + df.format(total) + ""); //To display the total amount in two decimals
                     return;
                 }
             }
 
+            //When JSpinner is pressed once, a row will be added to the JTable
             for (int i = 0; i < numberOfDrinks; i++) {
                 if (spinnerFries == e.getSource()) {
                     sides1 = 5.00;
