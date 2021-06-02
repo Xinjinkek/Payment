@@ -106,7 +106,6 @@ public class Menu extends JFrame  {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //Validation of order
-                System.out.println(textFieldTotal.getText());
                 if (tableOrder.getRowCount()== 0) {
                     JOptionPane.showMessageDialog(null, "No order received!");
                 }
